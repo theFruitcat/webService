@@ -19,9 +19,9 @@ import java.util.logging.Logger;
 @ContextConfiguration(locations = {"classpath:Spring-myBaties.xml"})
 public class userServiceImplTest extends TestCase {
     private  static Logger logger = Logger.getLogger("userServiceImplTest.class");
-    private ApplicationContext ac = null;
-    @Resource
-    private UserService userService = null;
+
+    @Autowired
+    private UserService userService;
 
     @Test
     public void getUserInfo() {
