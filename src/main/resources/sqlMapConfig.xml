@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- <settings></settings> -->
+
+    <!-- 自定义别名 -->
+    <typeAliases>
+        <!-- 单个别名定义 -->
+        <!-- <typeAlias type="com.itheima.mybatis.po.User" alias="user"/> -->
+        <!--<typeAlias type="com.study.domain.User" alias="user"/>-->
+        <!-- 批量别名定义（推荐） -->
+        <!-- package：指定包名称来为该包下的po类声明别名，默认的别名就是类名（首字母大小写都可） -->
+        <package name="com.study.domain" />
+        <!--<typeAlias alias="role" type="com.ssm.chapter12.pojo.Role" />-->
+    </typeAliases>
+    <!-- 加载映射文件 -->
+    <mappers>
+        <!--<package name="com.study.mapping"/> -->
+        <mapper resource="com/study/mapping/UserMapper.xml" />
+        <!--<mapper resource="com/ssm/chapter12/sql/mapper/RoleMapper.xml" />-->
+        <!--<mapper resource="com.study.mapping.UserMapper.xml"/>-->
+    </mappers>
+</configuration>
