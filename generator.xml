@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">   
 <!-- java -jar mybatis-generator-core-1.3.5.jar -configfile generator.xml -overwrite --> 
 <generatorConfiguration>    
- 
+ <!--我一定会回来的  -->
     <classPathEntry  location="mysql-connector-java-5.1.6-bin.jar"/>    
     <context id="DB2Tables"  targetRuntime="MyBatis3">    
         <commentGenerator>    
