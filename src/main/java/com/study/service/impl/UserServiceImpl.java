@@ -1,13 +1,16 @@
 package com.study.service.impl;
 
-import com.study.dao.UserMapper;
-import com.study.domain.User;
-import com.study.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.study.dao.UserMapper;
+import com.study.domain.User;
+import com.study.service.UserService;
+
+
 @Service("userService")
 public class UserServiceImpl implements UserService {
+	
     @Autowired
     private  UserMapper userMapper;
 
