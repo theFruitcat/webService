@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.dao.WordReciteVOMapper">
+  <resultMap id="BaseResultMap" type="com.study.domain.WordReciteVO">
+    <id column="CATAGORY_ID" jdbcType="INTEGER" property="catagoryId" />
+    <id column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="VOICE_ADDRESS" jdbcType="VARCHAR" property="voiceAddress" />
+    <result column="PICTURE_ADDRESS" jdbcType="VARCHAR" property="pictureAddress" />
+    <result column="EXPLANATION" jdbcType="VARCHAR" property="explanation" />
+    <result column="EXAMPLE_SENTENCE" jdbcType="VARCHAR" property="exampleSentence" />
+    <result column="SENTENCE_TRANSLATE" jdbcType="VARCHAR" property="sentenceTranslate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CATAGORY_ID, NAME, VOICE_ADDRESS, PICTURE_ADDRESS, EXPLANATION, EXAMPLE_SENTENCE, 
+    SENTENCE_TRANSLATE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.study.domain.WordReciteVOKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from word_recite
+    where CATAGORY_ID = #{catagoryId,jdbcType=INTEGER}
+      and NAME = #{name,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.study.domain.WordReciteVOKey">
+    delete from word_recite
+    where CATAGORY_ID = #{catagoryId,jdbcType=INTEGER}
+      and NAME = #{name,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.study.domain.WordReciteVO">
+    insert into word_recite (CATAGORY_ID, NAME, VOICE_ADDRESS, 
+      PICTURE_ADDRESS, EXPLANATION, EXAMPLE_SENTENCE, 
+      SENTENCE_TRANSLATE)
+    values (#{catagoryId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{voiceAddress,jdbcType=VARCHAR}, 
+      #{pictureAddress,jdbcType=VARCHAR}, #{explanation,jdbcType=VARCHAR}, #{exampleSentence,jdbcType=VARCHAR}, 
+      #{sentenceTranslate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.study.domain.WordReciteVO">
+    insert into word_recite
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="catagoryId != null">
+        CATAGORY_ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="voiceAddress != null">
+        VOICE_ADDRESS,
+      </if>
+      <if test="pictureAddress != null">
+        PICTURE_ADDRESS,
+      </if>
+      <if test="explanation != null">
+        EXPLANATION,
+      </if>
+      <if test="exampleSentence != null">
+        EXAMPLE_SENTENCE,
+      </if>
+      <if test="sentenceTranslate != null">
+        SENTENCE_TRANSLATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="catagoryId != null">
+        #{catagoryId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="voiceAddress != null">
+        #{voiceAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureAddress != null">
+        #{pictureAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="explanation != null">
+        #{explanation,jdbcType=VARCHAR},
+      </if>
+      <if test="exampleSentence != null">
+        #{exampleSentence,jdbcType=VARCHAR},
+      </if>
+      <if test="sentenceTranslate != null">
+        #{sentenceTranslate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.study.domain.WordReciteVO">
+    update word_recite
+    <set>
+      <if test="voiceAddress != null">
+        VOICE_ADDRESS = #{voiceAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureAddress != null">
+        PICTURE_ADDRESS = #{pictureAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="explanation != null">
+        EXPLANATION = #{explanation,jdbcType=VARCHAR},
+      </if>
+      <if test="exampleSentence != null">
+        EXAMPLE_SENTENCE = #{exampleSentence,jdbcType=VARCHAR},
+      </if>
+      <if test="sentenceTranslate != null">
+        SENTENCE_TRANSLATE = #{sentenceTranslate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CATAGORY_ID = #{catagoryId,jdbcType=INTEGER}
+      and NAME = #{name,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.study.domain.WordReciteVO">
+    update word_recite
+    set VOICE_ADDRESS = #{voiceAddress,jdbcType=VARCHAR},
+      PICTURE_ADDRESS = #{pictureAddress,jdbcType=VARCHAR},
+      EXPLANATION = #{explanation,jdbcType=VARCHAR},
+      EXAMPLE_SENTENCE = #{exampleSentence,jdbcType=VARCHAR},
+      SENTENCE_TRANSLATE = #{sentenceTranslate,jdbcType=VARCHAR}
+    where CATAGORY_ID = #{catagoryId,jdbcType=INTEGER}
+      and NAME = #{name,jdbcType=VARCHAR}
+  </update>
+</mapper>

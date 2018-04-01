@@ -1,6 +1,6 @@
 package com.study.service.impl;
 
-import com.study.dao.UserMapper;
+import com.study.dao.UserVOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -14,5 +14,8 @@ public class test {
         JdbcTemplate jdbcTemplate = ctx.getBean(JdbcTemplate.class);
 
         test test = new test();
+
+
+
     }
 }

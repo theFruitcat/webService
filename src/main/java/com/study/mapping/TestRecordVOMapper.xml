@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.dao.TestRecordVOMapper">
+  <resultMap id="BaseResultMap" type="com.study.domain.TestRecordVO">
+    <id column="USER_ID" jdbcType="VARCHAR" property="userId" />
+    <result column="FRACTION" jdbcType="INTEGER" property="fraction" />
+    <result column="LEVEL" jdbcType="VARCHAR" property="level" />
+    <result column="TEST_TIME" jdbcType="TIMESTAMP" property="testTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    USER_ID, FRACTION, LEVEL, TEST_TIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from test_record
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from test_record
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.study.domain.TestRecordVO">
+    insert into test_record (USER_ID, FRACTION, LEVEL, 
+      TEST_TIME)
+    values (#{userId,jdbcType=VARCHAR}, #{fraction,jdbcType=INTEGER}, #{level,jdbcType=VARCHAR}, 
+      #{testTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.study.domain.TestRecordVO">
+    insert into test_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="fraction != null">
+        FRACTION,
+      </if>
+      <if test="level != null">
+        LEVEL,
+      </if>
+      <if test="testTime != null">
+        TEST_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="fraction != null">
+        #{fraction,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="testTime != null">
+        #{testTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.study.domain.TestRecordVO">
+    update test_record
+    <set>
+      <if test="fraction != null">
+        FRACTION = #{fraction,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        LEVEL = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="testTime != null">
+        TEST_TIME = #{testTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.study.domain.TestRecordVO">
+    update test_record
+    set FRACTION = #{fraction,jdbcType=INTEGER},
+      LEVEL = #{level,jdbcType=VARCHAR},
+      TEST_TIME = #{testTime,jdbcType=TIMESTAMP}
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>

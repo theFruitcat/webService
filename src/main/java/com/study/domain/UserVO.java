@@ -1,36 +1,41 @@
 package com.study.domain;
 
 import java.util.Date;
-
-public class User {
-    private String username;
-
+/**
+ * 用户实体类
+ * */
+public class UserVO {
+    //用户ID
+    private String userId;
+    //密码
     private String password;
-
-    private Date registData;
-
-    private Integer level;
-
+    //注册时间
+    private Date registDate;
+    //等级
+    private String level;
+    //姓名
     private String name;
-
+    //别名
     private String alias;
-
+    //年龄
     private Integer age;
-
+    //电话号码
     private Integer phoneNumber;
-
-    private Integer integral;
-
+    //经验值
+    private String integral;
+    //能力等级
     private String abilityLevel;
-
+    //测试失败次数
     private Integer numberFailure;
+    //邮箱
+    private String email;
 
-    public String getUsername() {
-        return username;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
     }
 
     public String getPassword() {
@@ -41,20 +46,20 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
-    public Date getRegistData() {
-        return registData;
+    public Date getRegistDate() {
+        return registDate;
     }
 
-    public void setRegistData(Date registData) {
-        this.registData = registData;
+    public void setRegistDate(Date registDate) {
+        this.registDate = registDate;
     }
 
-    public Integer getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(Integer level) {
-        this.level = level;
+    public void setLevel(String level) {
+        this.level = level == null ? null : level.trim();
     }
 
     public String getName() {
@@ -89,12 +94,12 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getIntegral() {
+    public String getIntegral() {
         return integral;
     }
 
-    public void setIntegral(Integer integral) {
-        this.integral = integral;
+    public void setIntegral(String integral) {
+        this.integral = integral == null ? null : integral.trim();
     }
 
     public String getAbilityLevel() {
@@ -111,5 +116,13 @@ public class User {
 
     public void setNumberFailure(Integer numberFailure) {
         this.numberFailure = numberFailure;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
     }
 }

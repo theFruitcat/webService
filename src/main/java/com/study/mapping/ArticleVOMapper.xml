@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.dao.ArticleVOMapper">
+  <resultMap id="BaseResultMap" type="com.study.domain.ArticleVO">
+    <id column="ARTICLE_ID" jdbcType="INTEGER" property="articleId" />
+    <result column="ARTICLE_NAME" jdbcType="VARCHAR" property="articleName" />
+    <result column="USER_ID" jdbcType="VARCHAR" property="userId" />
+    <result column="TIME" jdbcType="TIMESTAMP" property="time" />
+    <result column="LABEL" jdbcType="VARCHAR" property="label" />
+    <result column="CLICKS" jdbcType="INTEGER" property="clicks" />
+    <result column="PASSED" jdbcType="VARCHAR" property="passed" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.study.domain.ArticleVO">
+    <result column="CONTENT" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ARTICLE_ID, ARTICLE_NAME, USER_ID, TIME, LABEL, CLICKS, PASSED
+  </sql>
+  <sql id="Blob_Column_List">
+    CONTENT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from article
+    where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from article
+    where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.study.domain.ArticleVO">
+    insert into article (ARTICLE_ID, ARTICLE_NAME, USER_ID, 
+      TIME, LABEL, CLICKS, 
+      PASSED, CONTENT)
+    values (#{articleId,jdbcType=INTEGER}, #{articleName,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{time,jdbcType=TIMESTAMP}, #{label,jdbcType=VARCHAR}, #{clicks,jdbcType=INTEGER}, 
+      #{passed,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.study.domain.ArticleVO">
+    insert into article
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="articleId != null">
+        ARTICLE_ID,
+      </if>
+      <if test="articleName != null">
+        ARTICLE_NAME,
+      </if>
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="time != null">
+        TIME,
+      </if>
+      <if test="label != null">
+        LABEL,
+      </if>
+      <if test="clicks != null">
+        CLICKS,
+      </if>
+      <if test="passed != null">
+        PASSED,
+      </if>
+      <if test="content != null">
+        CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="articleId != null">
+        #{articleId,jdbcType=INTEGER},
+      </if>
+      <if test="articleName != null">
+        #{articleName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="label != null">
+        #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="clicks != null">
+        #{clicks,jdbcType=INTEGER},
+      </if>
+      <if test="passed != null">
+        #{passed,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.study.domain.ArticleVO">
+    update article
+    <set>
+      <if test="articleName != null">
+        ARTICLE_NAME = #{articleName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        TIME = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="label != null">
+        LABEL = #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="clicks != null">
+        CLICKS = #{clicks,jdbcType=INTEGER},
+      </if>
+      <if test="passed != null">
+        PASSED = #{passed,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        CONTENT = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.study.domain.ArticleVO">
+    update article
+    set ARTICLE_NAME = #{articleName,jdbcType=VARCHAR},
+      USER_ID = #{userId,jdbcType=VARCHAR},
+      TIME = #{time,jdbcType=TIMESTAMP},
+      LABEL = #{label,jdbcType=VARCHAR},
+      CLICKS = #{clicks,jdbcType=INTEGER},
+      PASSED = #{passed,jdbcType=VARCHAR},
+      CONTENT = #{content,jdbcType=LONGVARCHAR}
+    where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.study.domain.ArticleVO">
+    update article
+    set ARTICLE_NAME = #{articleName,jdbcType=VARCHAR},
+      USER_ID = #{userId,jdbcType=VARCHAR},
+      TIME = #{time,jdbcType=TIMESTAMP},
+      LABEL = #{label,jdbcType=VARCHAR},
+      CLICKS = #{clicks,jdbcType=INTEGER},
+      PASSED = #{passed,jdbcType=VARCHAR}
+    where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+  </update>
+</mapper>
