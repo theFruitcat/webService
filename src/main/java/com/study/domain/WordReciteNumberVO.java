@@ -1,9 +1,9 @@
 package com.study.domain;
 /**
- * µ¥´Ê±³ËĞĞòºÅÊµÌåÀà
+ * èƒŒè¯µå•è¯ç¼–å·å®ä½“ç±»
  * */
 public class WordReciteNumberVO extends WordReciteNumberVOKey {
-    //µ¥´ÊĞòºÅ
+    //å•è¯ç¼–å·
     private Integer number;
 
     public Integer getNumber() {

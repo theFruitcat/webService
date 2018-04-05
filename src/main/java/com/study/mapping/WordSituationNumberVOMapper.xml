@@ -1,30 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.study.dao.WordSituationNumberVOMapper">
+
   <resultMap id="BaseResultMap" type="com.study.domain.WordSituationNumberVO">
     <id column="NAME" jdbcType="VARCHAR" property="name" />
     <result column="SITUATION" jdbcType="VARCHAR" property="situation" />
     <result column="NUMBER" jdbcType="INTEGER" property="number" />
   </resultMap>
+
   <sql id="Base_Column_List">
     NAME, SITUATION, NUMBER
   </sql>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from word_situation_number
     where NAME = #{name,jdbcType=VARCHAR}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from word_situation_number
     where NAME = #{name,jdbcType=VARCHAR}
   </delete>
+
   <insert id="insert" parameterType="com.study.domain.WordSituationNumberVO">
     insert into word_situation_number (NAME, SITUATION, NUMBER
       )
     values (#{name,jdbcType=VARCHAR}, #{situation,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}
       )
   </insert>
+
   <insert id="insertSelective" parameterType="com.study.domain.WordSituationNumberVO">
     insert into word_situation_number
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -50,6 +56,7 @@
       </if>
     </trim>
   </insert>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.study.domain.WordSituationNumberVO">
     update word_situation_number
     <set>
@@ -62,6 +69,7 @@
     </set>
     where NAME = #{name,jdbcType=VARCHAR}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="com.study.domain.WordSituationNumberVO">
     update word_situation_number
     set SITUATION = #{situation,jdbcType=VARCHAR},

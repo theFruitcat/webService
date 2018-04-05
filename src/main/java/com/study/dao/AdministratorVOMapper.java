@@ -1,20 +1,23 @@
 package com.study.dao;
 
 import com.study.domain.AdministratorVO;
+import org.springframework.stereotype.Repository;
+
 /**
- * ¹ÜÀíÔ±ÊµÌåÀà½Ó¿Ú
+ * ç®¡ç†å‘˜å®ä½“ç±»æ¥å£
  * */
+@Repository
 public interface AdministratorVOMapper {
-    //¸ù¾İIDÉ¾³ı¹ÜÀíÔ±
+    //æ ¹æ®IDåˆ é™¤ç®¡ç†å‘˜
     int deleteByPrimaryKey(String administratorId);
-    //Ìí¼Ó¹ÜÀíÔ± ²»ÍÆ¼ö
+    //æ·»åŠ ç®¡ç†å‘˜ ä¸æ¨è
     int insert(AdministratorVO record);
-    //Ìí¼Ó¹ÜÀíÔ±
+    //æ·»åŠ ç®¡ç†å‘˜
     int insertSelective(AdministratorVO record);
-    //²éÑ¯¹ÜÀíÔ±
+    //æŸ¥è¯¢ç®¡ç†å‘˜
     AdministratorVO selectByPrimaryKey(String administratorId);
-    //¸üĞÂ¹ÜÀíÔ±
+    //æ›´æ–°ç®¡ç†å‘˜
     int updateByPrimaryKeySelective(AdministratorVO record);
-    //¸üĞÂ¹ÜÀíÔ± ²»ÍÆ¼ö
+    //æ›´æ–°ç®¡ç†å‘˜ ä¸æ¨è
     int updateByPrimaryKey(AdministratorVO record);
 }

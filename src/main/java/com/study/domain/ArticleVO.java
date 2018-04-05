@@ -2,25 +2,25 @@ package com.study.domain;
 
 import java.util.Date;
 /**
- * ÎÄÕÂÊµÌåÀà
+ * æ–‡ç« å®ä½“ç±»
  *
  * */
 public class ArticleVO {
-    //ÎÄÕÂID
+    //æ–‡ç« ID
     private Integer articleId;
-    //ÎÄÕÂÃû³Æ
+    //æ–‡ç« åç§°
     private String articleName;
-    //ÓÃ»§ID(×÷Õß)
+    //ç”¨æˆ·ID(ä½œè€…)
     private String userId;
-    //´´½¨Ê±¼ä
+    //åˆ›ä½œæ—¥æœŸ
     private Date time;
-    //±êÇ©
+    //æ ‡ç­¾
     private String label;
-    //µã»÷Êı
+    //ç‚¹å‡»æ•°
     private Integer clicks;
-    //ÊÇ·ñÍ¨¹ı
+    //æ˜¯å¦é€šè¿‡
     private String passed;
-    //ÎÄÕÂÄÚÈİ
+    //æ–‡ç« å†…å®¹
     private String content;
 
     public Integer getArticleId() {

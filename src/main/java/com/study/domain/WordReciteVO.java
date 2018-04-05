@@ -1,18 +1,18 @@
 package com.study.domain;
 /**
- * µ¥´Ê±³ËĞÊµÌåÀà
+ * èƒŒè¯µå•è¯å®ä½“ç±»
  *
  * */
 public class WordReciteVO extends WordReciteVOKey {
-    //ÉùÒôµØÖ·
+    //Ö·å£°éŸ³åœ°å€
     private String voiceAddress;
-    //Í¼Æ¬µØÖ·
+    //å›¾ç‰‡åœ°å€
     private String pictureAddress;
-    //ÊÍÒå
+    //é‡Šä¹‰
     private String explanation;
-    //Àı¾ä
+    //ä¾‹å¥
     private String exampleSentence;
-    //Àı¾äÊÍÒå
+    //ä¾‹å¥é‡Šä¹‰
     private String sentenceTranslate;
 
     public String getVoiceAddress() {

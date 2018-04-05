@@ -1,14 +1,14 @@
 package com.study.domain;
 /**
- * 已背诵的单词实体类
+ * 宸茶儗璇靛崟璇嶅疄浣撶被
  *
  * */
 public class WordRecitedVO {
-    //用户ID
+    //鐢ㄦ埛ID
     private String userId;
-    //类别ID
+    //绫诲埆ID
     private Integer categoryId;
-    //背诵编号
+    //鑳岃缂栧彿
     private Integer reciteNumber;
 
     public String getUserId() {

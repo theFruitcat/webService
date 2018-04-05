@@ -1,16 +1,16 @@
 package com.study.domain;
 /**
- * ¹ÜÀíÔ±ÊµÌåÀà
+ * ç®¡ç†å‘˜å®ä½“ç±»
  *
  * */
 public class AdministratorVO {
-    //¹ÜÀíÔ±ID
+    //ç®¡ç†å‘˜ID
     private String administratorId;
-    //¹ÜÀíÔ±ÃÜÂë
+    //ç®¡ç†å‘˜å¯†ç 
     private String password;
-    //¹ÜÀíÔ±Ãû³Æ
+    //ç®¡ç†å‘˜åç§°
     private String name;
-    //µç»°ºÅÂë
+    //ç”µè¯å·ç 
     private Integer phoneNumber;
 
     public String getAdministratorId() {

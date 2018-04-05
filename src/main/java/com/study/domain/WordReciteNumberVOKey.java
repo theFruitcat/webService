@@ -1,9 +1,9 @@
 package com.study.domain;
 
 public class WordReciteNumberVOKey {
-    //单词类别
+    //绫诲埆ID
     private Integer categoryId;
-    //单词名称
+    //鍗曡瘝鍚嶇О
     private String name;
 
     public Integer getCategoryId() {

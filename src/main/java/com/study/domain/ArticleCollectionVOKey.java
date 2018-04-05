@@ -1,9 +1,12 @@
 package com.study.domain;
-
+/**
+ * 文章收藏实体类
+ *
+ * */
 public class ArticleCollectionVOKey {
-    //�û�ID
+    //用户ID
     private String userId;
-    //����ID
+    //文章ID
     private Integer articleId;
 
     public String getUserId() {

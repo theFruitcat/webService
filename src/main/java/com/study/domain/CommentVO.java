@@ -2,16 +2,16 @@ package com.study.domain;
 
 import java.util.Date;
 /**
- * ÆÀÂÛÊµÌåÀà
+ * è¯„è®ºå®ä½“ç±»
  * */
 public class CommentVO extends CommentVOKey {
-    //ÆÀÂÛÈËÃû³Æ
+    //å§“å
     private String name;
-    //ÆÀÂÛÊ±¼ä
+    //è¯„è®ºæ—¶é—´
     private Date commentTime;
-    //ÆÀÂÛÈËID
+    //è¯„è®ºäººID
     private String commentPeopleId;
-    //ÆÀÂÛÄÚÈİ
+    //è¯„è®ºå†…å®¹
     private String commentContent;
 
     public String getName() {

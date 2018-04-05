@@ -1,31 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.study.dao.WordStituationVOMapper">
+
   <resultMap id="BaseResultMap" type="com.study.domain.WordStituationVO">
     <id column="NAME" jdbcType="VARCHAR" property="name" />
     <result column="VOICE_ADDRESS" jdbcType="VARCHAR" property="voiceAddress" />
     <result column="PICTURE_ADDRESS" jdbcType="VARCHAR" property="pictureAddress" />
     <result column="CHINESE_TRANSLATION" jdbcType="VARCHAR" property="chineseTranslation" />
   </resultMap>
+
   <sql id="Base_Column_List">
     NAME, VOICE_ADDRESS, PICTURE_ADDRESS, CHINESE_TRANSLATION
   </sql>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from word_situation
     where NAME = #{name,jdbcType=VARCHAR}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from word_situation
     where NAME = #{name,jdbcType=VARCHAR}
   </delete>
+
   <insert id="insert" parameterType="com.study.domain.WordStituationVO">
     insert into word_situation (NAME, VOICE_ADDRESS, PICTURE_ADDRESS, 
       CHINESE_TRANSLATION)
     values (#{name,jdbcType=VARCHAR}, #{voiceAddress,jdbcType=VARCHAR}, #{pictureAddress,jdbcType=VARCHAR}, 
       #{chineseTranslation,jdbcType=VARCHAR})
   </insert>
+
   <insert id="insertSelective" parameterType="com.study.domain.WordStituationVO">
     insert into word_situation
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -57,6 +63,7 @@
       </if>
     </trim>
   </insert>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.study.domain.WordStituationVO">
     update word_situation
     <set>
@@ -72,6 +79,7 @@
     </set>
     where NAME = #{name,jdbcType=VARCHAR}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="com.study.domain.WordStituationVO">
     update word_situation
     set VOICE_ADDRESS = #{voiceAddress,jdbcType=VARCHAR},

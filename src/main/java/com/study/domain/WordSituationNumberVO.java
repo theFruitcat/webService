@@ -1,13 +1,13 @@
 package com.study.domain;
 /**
- * µ¥´ÊÇé¾³ĞòºÅÊµÌåÀà
+ * æƒ…å¢ƒå•è¯ç¼–å·å®ä½“ç±»
  * */
 public class WordSituationNumberVO {
-    //µ¥´ÊÃû³Æ
+    //å•è¯åç§°
     private String name;
-    //µ¥´ÊÇé¾³
+    //æƒ…å¢ƒ
     private String situation;
-    //µ¥´Ê±àºÅ
+    //å•è¯ç¼–å·
     private Integer number;
 
     public String getName() {

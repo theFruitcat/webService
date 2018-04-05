@@ -2,18 +2,20 @@ package com.study.dao;
 
 import com.study.domain.WordReciteNumberVO;
 import com.study.domain.WordReciteNumberVOKey;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface WordReciteNumberVOMapper {
-    //删除背诵单词编号
+    //鍒犻櫎鑳岃鍗曡瘝缂栧彿
     int deleteByPrimaryKey(WordReciteNumberVOKey key);
-    //新增背诵单词编号
+    //鏂板鑳岃鍗曡瘝缂栧彿
     int insert(WordReciteNumberVO record);
-    //新增背诵单词编号
+    //鏂板鑳岃鍗曡瘝缂栧彿
     int insertSelective(WordReciteNumberVO record);
-    //查询背诵单词编号
+    //鏌ヨ鑳岃鍗曡瘝缂栧彿
     WordReciteNumberVO selectByPrimaryKey(WordReciteNumberVOKey key);
-    //更新单词编号
+    //鏇存柊鑳岃鍗曡瘝缂栧彿
     int updateByPrimaryKeySelective(WordReciteNumberVO record);
-    //更新单词编号
+    //鏇存柊鑳岃鍗曡瘝缂栧彿
     int updateByPrimaryKey(WordReciteNumberVO record);
 }

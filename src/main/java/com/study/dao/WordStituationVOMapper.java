@@ -1,18 +1,20 @@
 package com.study.dao;
 
 import com.study.domain.WordStituationVO;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface WordStituationVOMapper {
-    //删除背诵单词
+    //鍒犻櫎鎯呭鍗曡瘝
     int deleteByPrimaryKey(String name);
-    //新增背诵单词
+    //鏂板鎯呭鍗曡瘝
     int insert(WordStituationVO record);
-    //新增背诵单词
+    //鏂板鎯呭鍗曡瘝
     int insertSelective(WordStituationVO record);
-    //查询背诵单词
+    //鏌ヨ鎯呭鍗曡瘝
     WordStituationVO selectByPrimaryKey(String name);
-    //更新背诵单词
+    //鏇存柊鎯呭鍗曡瘝
     int updateByPrimaryKeySelective(WordStituationVO record);
-    //更新背诵单词
+    //鏇存柊鎯呭鍗曡瘝
     int updateByPrimaryKey(WordStituationVO record);
 }

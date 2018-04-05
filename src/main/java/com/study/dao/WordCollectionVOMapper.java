@@ -1,18 +1,20 @@
 package com.study.dao;
 
 import com.study.domain.WordCollectionVO;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface WordCollectionVOMapper {
-    //删除单词收藏
+    //鍒犻櫎鏀惰棌鍗曡瘝
     int deleteByPrimaryKey(String userId);
-    //新增单词收藏
+    //鏂板鍗曡瘝鏀惰棌
     int insert(WordCollectionVO record);
-    //新增单词收藏
+    //鏂板鍗曡瘝鏀惰棌
     int insertSelective(WordCollectionVO record);
-    //查询收藏单词
+    //鏌ヨ鏀惰棌鍗曡瘝
     WordCollectionVO selectByPrimaryKey(String userId);
-    //更新收藏单词
+    //鏇存柊鏀惰棌鍗曡瘝
     int updateByPrimaryKeySelective(WordCollectionVO record);
-    //更新收藏单词
+    //鏇存柊鏀惰棌鍗曡瘝
     int updateByPrimaryKey(WordCollectionVO record);
 }

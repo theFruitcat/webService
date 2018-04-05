@@ -2,16 +2,16 @@ package com.study.domain;
 
 import java.util.Date;
 /**
- * 测试记录实体类
+ * 娴嬭瘯璁板綍
  * */
 public class TestRecordVO {
-    //用户ID
+    //鐢ㄦ埛ID
     private String userId;
-    //分数
+    //鍒嗘暟
     private Integer fraction;
-    //等级
+    //绛夌骇
     private String level;
-    //测试时间
+    //娴嬭瘯鏃堕棿
     private Date testTime;
 
     public String getUserId() {

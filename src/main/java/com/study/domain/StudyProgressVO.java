@@ -2,16 +2,16 @@ package com.study.domain;
 
 import java.util.Date;
 /**
- * Ñ§Ï°½ø¶ÈÊµÌåÀà
+ * å­¦ä¹ è¿›åº¦å®ä½“ç±»
  * */
 public class StudyProgressVO {
-    //ÓÃ»§ID
+    //ç”¨æˆ·ID
     private String userId;
-    //Àà±ğID
+    //ç±»åˆ«ID
     private Integer categoryId;
-    //µ±Ç°±³ËĞµ¥´Ê±àºÅ
+    //å½“å‰èƒŒè¯µå•è¯ç¼–å·
     private Integer currentNumber;
-    //±³ËĞ¿ªÊ¼Ê±¼ä
+    //èƒŒè¯µæ—¶é—´
     private Date reciteTime;
 
     public String getUserId() {

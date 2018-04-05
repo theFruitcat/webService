@@ -1,9 +1,9 @@
 package com.study.domain;
 
 public class CommentVOKey {
-    //ÆÀÂÛID
+    //è¯„è®ºID
     private Integer commentId;
-    //ÎÄÕÂID
+    //æ–‡ç« ID
     private Integer articleId;
 
     public Integer getCommentId() {

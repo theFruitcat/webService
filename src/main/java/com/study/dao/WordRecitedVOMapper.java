@@ -1,18 +1,20 @@
 package com.study.dao;
 
 import com.study.domain.WordRecitedVO;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface WordRecitedVOMapper {
-    //É¾³ı±³ËĞµ¥´Ê
+    //åˆ é™¤å·²èƒŒè¯µå•è¯
     int deleteByPrimaryKey(String userId);
-    //ĞÂÔö±³ËĞµ¥´Ê
+    //æ–°å¢å·²èƒŒè¯µå•è¯
     int insert(WordRecitedVO record);
-    //ĞÂÔö±³ËĞµ¥´Ê
+    //æ–°å¢å·²èƒŒè¯µå•è¯
     int insertSelective(WordRecitedVO record);
-    //²éÑ¯µ¥´Ê
+    //æŸ¥è¯¢å·²èƒŒè¯µå•è¯
     WordRecitedVO selectByPrimaryKey(String userId);
-    //¸üĞÂµ¥´Ê
+    //æ›´æ–°å·²èƒŒè¯µå•è¯
     int updateByPrimaryKeySelective(WordRecitedVO record);
-    //¸üĞÂµ¥´Ê
+    //æ›´æ–°å·²èƒŒè¯µå•è¯
     int updateByPrimaryKey(WordRecitedVO record);
 }

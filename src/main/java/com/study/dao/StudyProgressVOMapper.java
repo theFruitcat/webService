@@ -1,18 +1,20 @@
 package com.study.dao;
 
 import com.study.domain.StudyProgressVO;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface StudyProgressVOMapper {
-    //删除学习进度
+    //鍒犻櫎瀛︿範杩涘害
     int deleteByPrimaryKey(String userId);
-    //新增学习进度
+    //鏂板瀛︿範杩涘害
     int insert(StudyProgressVO record);
-    //新增学习进度
+    //鏂板瀛︿範杩涘害
     int insertSelective(StudyProgressVO record);
-    //查询学习进度
+    //鏌ヨ瀛︿範杩涘害
     StudyProgressVO selectByPrimaryKey(String userId);
-    //更新学习进度
+    //鏇存柊瀛︿範杩涘害
     int updateByPrimaryKeySelective(StudyProgressVO record);
-    //更新学习进度
+    //鏇存柊瀛︿範杩涘害
     int updateByPrimaryKey(StudyProgressVO record);
 }

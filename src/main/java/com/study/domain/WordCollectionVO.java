@@ -1,13 +1,13 @@
 package com.study.domain;
 /**
- * µ¥´ÊÊÕ²ØÊµÌåÀà
+ * å•è¯æ”¶è—å®ä½“ç±»
  * */
 public class WordCollectionVO {
-    //ÓÃ»§ID
+    //ç”¨æˆ·ID
     private String userId;
-    //Àà±ğID
+    //ç±»åˆ«ID
     private Integer categoryId;
-    //ÊÕ²Ø±àºÅ
+    //å•è¯æ”¶è—ç¼–å·
     private Integer collectionNumber;
 
     public String getUserId() {

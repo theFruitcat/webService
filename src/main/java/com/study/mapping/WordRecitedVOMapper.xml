@@ -1,30 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.study.dao.WordRecitedVOMapper">
+
   <resultMap id="BaseResultMap" type="com.study.domain.WordRecitedVO">
     <id column="USER_ID" jdbcType="VARCHAR" property="userId" />
     <result column="CATEGORY_ID" jdbcType="INTEGER" property="categoryId" />
     <result column="RECITE_NUMBER" jdbcType="INTEGER" property="reciteNumber" />
   </resultMap>
+
   <sql id="Base_Column_List">
     USER_ID, CATEGORY_ID, RECITE_NUMBER
   </sql>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from word_recited
     where USER_ID = #{userId,jdbcType=VARCHAR}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from word_recited
     where USER_ID = #{userId,jdbcType=VARCHAR}
   </delete>
+
   <insert id="insert" parameterType="com.study.domain.WordRecitedVO">
     insert into word_recited (USER_ID, CATEGORY_ID, RECITE_NUMBER
       )
     values (#{userId,jdbcType=VARCHAR}, #{categoryId,jdbcType=INTEGER}, #{reciteNumber,jdbcType=INTEGER}
       )
   </insert>
+
   <insert id="insertSelective" parameterType="com.study.domain.WordRecitedVO">
     insert into word_recited
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -50,6 +56,7 @@
       </if>
     </trim>
   </insert>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.study.domain.WordRecitedVO">
     update word_recited
     <set>
@@ -62,6 +69,7 @@
     </set>
     where USER_ID = #{userId,jdbcType=VARCHAR}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="com.study.domain.WordRecitedVO">
     update word_recited
     set CATEGORY_ID = #{categoryId,jdbcType=INTEGER},

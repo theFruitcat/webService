@@ -2,11 +2,11 @@ package com.study.domain;
 
 import java.util.Date;
 /**
- * ÎÄÕÂÊÕ²ØÊµÌåÀà
+ * æ–‡ç« æ”¶è—å®ä½“ç±»
  *
  * */
 public class ArticleCollectionVO extends ArticleCollectionVOKey {
-    //ÊÕ²ØÊ±¼ä
+    //æ”¶è—æ—¶é—´
     private Date collectionTime;
 
     public Date getCollectionTime() {

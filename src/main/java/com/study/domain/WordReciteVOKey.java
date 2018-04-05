@@ -1,9 +1,11 @@
 package com.study.domain;
-
+/**
+ *  èƒŒè¯µå•è¯ä¸»é”®å®ä½“ç±»
+ * */
 public class WordReciteVOKey {
-    //Àà±ğID
+    //ç±»åˆ«ID
     private Integer catagoryId;
-    //µ¥´ÊÃû³Æ
+    //å•è¯åç§°
     private String name;
 
     public Integer getCatagoryId() {

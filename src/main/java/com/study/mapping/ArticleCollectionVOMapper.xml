@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.study.dao.ArticleCollectionVOMapper">
+
   <resultMap id="BaseResultMap" type="com.study.domain.ArticleCollectionVO">
     <id column="USER_ID" jdbcType="VARCHAR" property="userId" />
     <id column="ARTICLE_ID" jdbcType="INTEGER" property="articleId" />
     <result column="COLLECTION_TIME" jdbcType="TIMESTAMP" property="collectionTime" />
   </resultMap>
+
   <sql id="Base_Column_List">
     USER_ID, ARTICLE_ID, COLLECTION_TIME
   </sql>
+
   <select id="selectByPrimaryKey" parameterType="com.study.domain.ArticleCollectionVOKey" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -16,17 +19,20 @@
     where USER_ID = #{userId,jdbcType=VARCHAR}
       and ARTICLE_ID = #{articleId,jdbcType=INTEGER}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="com.study.domain.ArticleCollectionVOKey">
     delete from article_collection
     where USER_ID = #{userId,jdbcType=VARCHAR}
       and ARTICLE_ID = #{articleId,jdbcType=INTEGER}
   </delete>
+
   <insert id="insert" parameterType="com.study.domain.ArticleCollectionVO">
     insert into article_collection (USER_ID, ARTICLE_ID, COLLECTION_TIME
       )
     values (#{userId,jdbcType=VARCHAR}, #{articleId,jdbcType=INTEGER}, #{collectionTime,jdbcType=TIMESTAMP}
       )
   </insert>
+
   <insert id="insertSelective" parameterType="com.study.domain.ArticleCollectionVO">
     insert into article_collection
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -52,6 +58,7 @@
       </if>
     </trim>
   </insert>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.study.domain.ArticleCollectionVO">
     update article_collection
     <set>
@@ -62,6 +69,7 @@
     where USER_ID = #{userId,jdbcType=VARCHAR}
       and ARTICLE_ID = #{articleId,jdbcType=INTEGER}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="com.study.domain.ArticleCollectionVO">
     update article_collection
     set COLLECTION_TIME = #{collectionTime,jdbcType=TIMESTAMP}

@@ -1,31 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.study.dao.AdministratorVOMapper">
+
   <resultMap id="BaseResultMap" type="com.study.domain.AdministratorVO">
     <id column="ADMINISTRATOR_ID" jdbcType="VARCHAR" property="administratorId" />
     <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
     <result column="NAME" jdbcType="VARCHAR" property="name" />
     <result column="PHONE_NUMBER" jdbcType="INTEGER" property="phoneNumber" />
   </resultMap>
+
   <sql id="Base_Column_List">
     ADMINISTRATOR_ID, PASSWORD, NAME, PHONE_NUMBER
   </sql>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from administrator
     where ADMINISTRATOR_ID = #{administratorId,jdbcType=VARCHAR}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from administrator
     where ADMINISTRATOR_ID = #{administratorId,jdbcType=VARCHAR}
   </delete>
+
   <insert id="insert" parameterType="com.study.domain.AdministratorVO">
     insert into administrator (ADMINISTRATOR_ID, PASSWORD, NAME, 
       PHONE_NUMBER)
     values (#{administratorId,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{phoneNumber,jdbcType=INTEGER})
   </insert>
+
   <insert id="insertSelective" parameterType="com.study.domain.AdministratorVO">
     insert into administrator
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -57,6 +63,7 @@
       </if>
     </trim>
   </insert>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.study.domain.AdministratorVO">
     update administrator
     <set>
@@ -72,6 +79,7 @@
     </set>
     where ADMINISTRATOR_ID = #{administratorId,jdbcType=VARCHAR}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="com.study.domain.AdministratorVO">
     update administrator
     set PASSWORD = #{password,jdbcType=VARCHAR},

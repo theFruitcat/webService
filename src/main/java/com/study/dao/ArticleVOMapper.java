@@ -1,19 +1,21 @@
 package com.study.dao;
 
 import com.study.domain.ArticleVO;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ArticleVOMapper {
-    //删除文章
+    //鍒犻櫎鏂囩珷
     int deleteByPrimaryKey(Integer articleId);
-    //新增文章
+    //鏂板鏂囩珷
     int insert(ArticleVO record);
-    //新增文章
+    //鏂板鏂囩珷
     int insertSelective(ArticleVO record);
-    //查询文章
+    //鏌ヨ鏂囩珷
     ArticleVO selectByPrimaryKey(Integer articleId);
-    //更新文章
+    //鏇存柊鏂囩珷
     int updateByPrimaryKeySelective(ArticleVO record);
-    //和updateByExample相比此方法可以修改大字段类型，其余性质和updateByExample相同
+    //鍜寀pdateByExample鐩告瘮姝ゆ柟娉曞彲浠ヤ慨鏀瑰ぇ瀛楁绫诲瀷锛屽叾浣欐�ц川鍜寀pdateByExample鐩稿悓
     int updateByPrimaryKeyWithBLOBs(ArticleVO record);
 
     int updateByPrimaryKey(ArticleVO record);

@@ -1,16 +1,16 @@
 package com.study.domain;
 /**
- * Çé¾³µ¥´ÊÊµÌåÀà
+ * æƒ…å¢ƒå•è¯å®ä½“ç±»
  *
  * */
 public class WordStituationVO {
-    //µ¥´ÊÃû³Æ
+    //å•è¯åç§°
     private String name;
-    //ÉùÒôµØÖ·
+    //å£°éŸ³åœ°å€
     private String voiceAddress;
-    //Í¼Æ¬µØÖ·
+    //å›¾ç‰‡åœ°å€
     private String pictureAddress;
-    //ÖĞÎÄ·­Òë
+    //ä¸­æ–‡ç¿»è¯‘
     private String chineseTranslation;
 
     public String getName() {

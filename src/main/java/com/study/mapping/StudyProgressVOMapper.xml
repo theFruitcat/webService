@@ -1,31 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.study.dao.StudyProgressVOMapper">
+
   <resultMap id="BaseResultMap" type="com.study.domain.StudyProgressVO">
     <id column="USER_ID" jdbcType="VARCHAR" property="userId" />
     <result column="CATEGORY_ID" jdbcType="INTEGER" property="categoryId" />
     <result column="CURRENT_NUMBER" jdbcType="INTEGER" property="currentNumber" />
     <result column="RECITE_TIME" jdbcType="TIMESTAMP" property="reciteTime" />
   </resultMap>
+
   <sql id="Base_Column_List">
     USER_ID, CATEGORY_ID, CURRENT_NUMBER, RECITE_TIME
   </sql>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from study_progess
     where USER_ID = #{userId,jdbcType=VARCHAR}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from study_progess
     where USER_ID = #{userId,jdbcType=VARCHAR}
   </delete>
+
   <insert id="insert" parameterType="com.study.domain.StudyProgressVO">
     insert into study_progess (USER_ID, CATEGORY_ID, CURRENT_NUMBER, 
       RECITE_TIME)
     values (#{userId,jdbcType=VARCHAR}, #{categoryId,jdbcType=INTEGER}, #{currentNumber,jdbcType=INTEGER}, 
       #{reciteTime,jdbcType=TIMESTAMP})
   </insert>
+
   <insert id="insertSelective" parameterType="com.study.domain.StudyProgressVO">
     insert into study_progess
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -57,6 +63,7 @@
       </if>
     </trim>
   </insert>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.study.domain.StudyProgressVO">
     update study_progess
     <set>
@@ -72,6 +79,7 @@
     </set>
     where USER_ID = #{userId,jdbcType=VARCHAR}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="com.study.domain.StudyProgressVO">
     update study_progess
     set CATEGORY_ID = #{categoryId,jdbcType=INTEGER},

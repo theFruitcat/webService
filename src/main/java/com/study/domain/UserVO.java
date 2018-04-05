@@ -2,32 +2,32 @@ package com.study.domain;
 
 import java.util.Date;
 /**
- * ÓÃ»§ÊµÌåÀà
+ * ç”¨æˆ·å®ä½“ç±»
  * */
 public class UserVO {
-    //ÓÃ»§ID
+    //ç”¨æˆ·ID
     private String userId;
-    //ÃÜÂë
+    //ç”¨æˆ·å¯†ç 
     private String password;
-    //×¢²áÊ±¼ä
+    //æ³¨å†Œæ—¶é—´
     private Date registDate;
-    //µÈ¼¶
+    //èƒ½åŠ›ç­‰çº§
     private String level;
-    //ĞÕÃû
+    //å§“å
     private String name;
-    //±ğÃû
+    //åˆ«å,æ˜µç§°
     private String alias;
-    //ÄêÁä
+    //å¹´é¾„
     private Integer age;
-    //µç»°ºÅÂë
+    //ç”µè¯å·ç 
     private Integer phoneNumber;
-    //¾­ÑéÖµ
+    //ç§¯åˆ†
     private String integral;
-    //ÄÜÁ¦µÈ¼¶
+    //èƒ½åŠ›ç­‰çº§
     private String abilityLevel;
-    //²âÊÔÊ§°Ü´ÎÊı
+    //å¤±è´¥æ¬¡æ•°
     private Integer numberFailure;
-    //ÓÊÏä
+    //é‚®ç®±
     private String email;
 
     public String getUserId() {

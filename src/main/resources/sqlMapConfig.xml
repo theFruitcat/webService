@@ -17,8 +17,8 @@
     </typeAliases>
     <!-- 加载映射文件 -->
     <mappers>
-        <!--<package name="com.study.mapping"/> -->
-        <mapper resource="com/study/mapping/UserMapper.xml" />
+        <package name="com.study.mapping"/>
+        <!--<mapper resource="com/study/mapping/UserMapper.xml" />-->
         <!--<mapper resource="com/ssm/chapter12/sql/mapper/RoleMapper.xml" />-->
         <!--<mapper resource="com.study.mapping.UserMapper.xml"/>-->
     </mappers>

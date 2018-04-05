@@ -2,20 +2,22 @@ package com.study.dao;
 
 import com.study.domain.CommentVO;
 import com.study.domain.CommentVOKey;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface CommentVOMapper {
-    //删除评论
+    //鍒犻櫎璇勮
     int deleteByPrimaryKey(CommentVOKey key);
-    //新增评论
+    //鏂板璇勮
     int insert(CommentVO record);
-    //新增评论
+    //鏂板璇勮
     int insertSelective(CommentVO record);
-    //查询评论
+    //鏌ヨ璇勮
     CommentVO selectByPrimaryKey(CommentVOKey key);
-    //更新评论
+    //鏇存柊璇勮
     int updateByPrimaryKeySelective(CommentVO record);
-    //更新评论
+    //鏇存柊璇勮
     int updateByPrimaryKeyWithBLOBs(CommentVO record);
-    //更新评论
+    //鏇存柊璇勮
     int updateByPrimaryKey(CommentVO record);
 }

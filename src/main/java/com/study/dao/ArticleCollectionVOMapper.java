@@ -2,20 +2,23 @@ package com.study.dao;
 
 import com.study.domain.ArticleCollectionVO;
 import com.study.domain.ArticleCollectionVOKey;
+import org.springframework.stereotype.Repository;
+
 /**
- * ÎÄÕÂÊÕ²Ø
+ * æ–‡ç« æ”¶è—
  * */
+@Repository
 public interface ArticleCollectionVOMapper {
-    //É¾³ıÎÄÕÂÊÕ²Ø
+    //åˆ é™¤æ–‡ç« æ”¶è—
     int deleteByPrimaryKey(ArticleCollectionVOKey key);
-    //ĞÂÔöÎÄÕÂÊÕ²Ø
+    //æ–°å¢æ–‡ç« æ”¶è—
     int insert(ArticleCollectionVO record);
-    //ĞÂÔöÎÄÕÂÊÕ²Ø ²»ÔÊĞí´æÔÚ¿ÕÖµ
+    //æ–°å¢æ–‡ç« æ”¶è— ä¸å…è®¸å­˜åœ¨ç©ºå€¼
     int insertSelective(ArticleCollectionVO record);
-    //²éÑ¯ÎÄÕÂÊÕ²Ø
+    //æŸ¥è¯¢æ–‡ç« æ”¶è—
     ArticleCollectionVO selectByPrimaryKey(ArticleCollectionVOKey key);
-    //¸üĞÂÎÄÕÂÊÕ²Ø ÍÆ¼ö
+    //æ›´æ–°æ–‡ç« æ”¶è— æ¨è
     int updateByPrimaryKeySelective(ArticleCollectionVO record);
-    //¸üĞÂÎÄÕÂÊÕ²Ø
+    //æ›´æ–°æ–‡ç« æ”¶è—
     int updateByPrimaryKey(ArticleCollectionVO record);
 }
