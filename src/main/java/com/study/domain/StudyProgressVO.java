@@ -1,6 +1,8 @@
 package com.study.domain;
 
 import java.util.Date;
+import java.util.Map;
+
 /**
  * 学习进度实体类
  * */
@@ -13,6 +15,8 @@ public class StudyProgressVO {
     private Integer currentNumber;
     //背诵时间
     private Date reciteTime;
+    //是否完成当前任务
+    private boolean passed;
 
     public String getUserId() {
         return userId;
@@ -45,4 +49,5 @@ public class StudyProgressVO {
     public void setReciteTime(Date reciteTime) {
         this.reciteTime = reciteTime;
     }
+
 }

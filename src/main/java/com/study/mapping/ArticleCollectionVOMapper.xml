@@ -76,4 +76,16 @@
     where USER_ID = #{userId,jdbcType=VARCHAR}
       and ARTICLE_ID = #{articleId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectAll" parameterType="Map" resultType="com.study.domain.ArticleCollectionVO">
+    SELECT *
+    from article_collection
+      <where>
+          USER_ID = #{userId,jdbcType=VARCHAR}
+      </where>
+    ORDER  BY COLLECTION_TIME ASC
+      <if test="start!=null and size!=null">
+          limit #{start},#{size}
+      </if>
+  </select>
 </mapper>

@@ -2,7 +2,11 @@ package com.study.dao;
 
 import com.study.domain.ArticleCollectionVO;
 import com.study.domain.ArticleCollectionVOKey;
+import com.study.domain.PageVO;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * 文章收藏
@@ -21,4 +25,6 @@ public interface ArticleCollectionVOMapper {
     int updateByPrimaryKeySelective(ArticleCollectionVO record);
     //更新文章收藏
     int updateByPrimaryKey(ArticleCollectionVO record);
+    //查询文章收藏列表
+    List<ArticleCollectionVO> selectAll(Map<String,Object> map);
 }

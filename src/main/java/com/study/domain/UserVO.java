@@ -11,7 +11,7 @@ public class UserVO {
     private String password;
     //注册时间
     private Date registDate;
-    //能力等级
+    //等级,即背诵单词的等级
     private String level;
     //姓名
     private String name;
