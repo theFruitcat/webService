@@ -1,19 +1,19 @@
 package com.study.domain;
-/**
- *  背诵单词主键实体类
- * */
+
+import org.springframework.stereotype.Component;
+
+@Component
 public class WordReciteVOKey {
-    //类别ID
-    private Integer catagoryId;
-    //单词名称
+    private Integer categoryId;
+
     private String name;
 
-    public Integer getCatagoryId() {
-        return catagoryId;
+    public Integer getCategoryId() {
+        return categoryId;
     }
 
-    public void setCatagoryId(Integer catagoryId) {
-        this.catagoryId = catagoryId;
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getName() {

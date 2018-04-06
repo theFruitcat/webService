@@ -1,19 +1,21 @@
 package com.study.domain;
-/**
- * 背诵单词实体类
- *
- * */
+
+import java.util.List;
+import java.util.Map;
+
 public class WordReciteVO extends WordReciteVOKey {
-    //ַ声音地址
+    //音频地址
     private String voiceAddress;
     //图片地址
     private String pictureAddress;
-    //释义
+    //单词释义
     private String explanation;
     //例句
     private String exampleSentence;
     //例句释义
     private String sentenceTranslate;
+    //图片编号
+    private Integer number;
 
     public String getVoiceAddress() {
         return voiceAddress;
@@ -53,5 +55,13 @@ public class WordReciteVO extends WordReciteVOKey {
 
     public void setSentenceTranslate(String sentenceTranslate) {
         this.sentenceTranslate = sentenceTranslate == null ? null : sentenceTranslate.trim();
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 }

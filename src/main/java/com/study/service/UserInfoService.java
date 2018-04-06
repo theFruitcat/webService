@@ -1,4 +1,4 @@
-package com.study.service.impl;
+package com.study.service;
 
 import com.study.domain.*;
 
@@ -16,10 +16,10 @@ public interface UserInfoService {
     int updateUser(UserVO record);
     //查询用户的学习进度
     StudyProgressVO getStudyProgress(String userId);
-//    //查询用户已背诵的单词
-//    WordRecitedVO getRecitedWords(String userId);
-//    //查询用户收藏的单词
-//    WordCollectionVO getCollectionWords(String userId);
-    //查询用户收藏的文章
+    //查询用户已背诵的单词
+    List<WordRecitedVO> getRecitedWords(Map<String, Object> map);
+    //查询用户收藏的单词
+    List<WordCollectionVO> getCollectionWords(Map<String, Object> map);
+    //根据页面要求查询用户收藏的文章
     List<ArticleCollectionVO> getCollectionArticles(Map<String, Object> map);
 }

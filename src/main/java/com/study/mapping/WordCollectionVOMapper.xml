@@ -1,36 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.study.dao.WordCollectionVOMapper">
-
   <resultMap id="BaseResultMap" type="com.study.domain.WordCollectionVO">
     <id column="USER_ID" jdbcType="VARCHAR" property="userId" />
-    <result column="CATEGORY_ID" jdbcType="INTEGER" property="categoryId" />
-    <result column="COLLECTION_NUMBER" jdbcType="INTEGER" property="collectionNumber" />
+    <id column="CATEGORY_ID" jdbcType="INTEGER" property="categoryId" />
+    <id column="COLLECTION_NUMBER" jdbcType="INTEGER" property="collectionNumber" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
   </resultMap>
-
   <sql id="Base_Column_List">
-    USER_ID, CATEGORY_ID, COLLECTION_NUMBER
+    USER_ID, CATEGORY_ID, COLLECTION_NUMBER, NAME
   </sql>
-
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="com.study.domain.WordCollectionVOKey" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from word_collection
     where USER_ID = #{userId,jdbcType=VARCHAR}
+      and CATEGORY_ID = #{categoryId,jdbcType=INTEGER}
+      and COLLECTION_NUMBER = #{collectionNumber,jdbcType=INTEGER}
   </select>
-
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="com.study.domain.WordCollectionVOKey">
     delete from word_collection
     where USER_ID = #{userId,jdbcType=VARCHAR}
+      and CATEGORY_ID = #{categoryId,jdbcType=INTEGER}
+      and COLLECTION_NUMBER = #{collectionNumber,jdbcType=INTEGER}
   </delete>
-
   <insert id="insert" parameterType="com.study.domain.WordCollectionVO">
-    insert into word_collection (USER_ID, CATEGORY_ID, COLLECTION_NUMBER
-      )
-    values (#{userId,jdbcType=VARCHAR}, #{categoryId,jdbcType=INTEGER}, #{collectionNumber,jdbcType=INTEGER}
-      )
+    insert into word_collection (USER_ID, CATEGORY_ID, COLLECTION_NUMBER, 
+      NAME)
+    values (#{userId,jdbcType=VARCHAR}, #{categoryId,jdbcType=INTEGER}, #{collectionNumber,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR})
   </insert>
-
   <insert id="insertSelective" parameterType="com.study.domain.WordCollectionVO">
     insert into word_collection
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -43,6 +42,9 @@
       <if test="collectionNumber != null">
         COLLECTION_NUMBER,
       </if>
+      <if test="name != null">
+        NAME,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -54,26 +56,42 @@
       <if test="collectionNumber != null">
         #{collectionNumber,jdbcType=INTEGER},
       </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
-
   <update id="updateByPrimaryKeySelective" parameterType="com.study.domain.WordCollectionVO">
     update word_collection
     <set>
-      <if test="categoryId != null">
-        CATEGORY_ID = #{categoryId,jdbcType=INTEGER},
-      </if>
-      <if test="collectionNumber != null">
-        COLLECTION_NUMBER = #{collectionNumber,jdbcType=INTEGER},
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
       </if>
     </set>
     where USER_ID = #{userId,jdbcType=VARCHAR}
+      and CATEGORY_ID = #{categoryId,jdbcType=INTEGER}
+      and COLLECTION_NUMBER = #{collectionNumber,jdbcType=INTEGER}
   </update>
-
   <update id="updateByPrimaryKey" parameterType="com.study.domain.WordCollectionVO">
     update word_collection
-    set CATEGORY_ID = #{categoryId,jdbcType=INTEGER},
-      COLLECTION_NUMBER = #{collectionNumber,jdbcType=INTEGER}
+    set NAME = #{name,jdbcType=VARCHAR}
     where USER_ID = #{userId,jdbcType=VARCHAR}
+      and CATEGORY_ID = #{categoryId,jdbcType=INTEGER}
+      and COLLECTION_NUMBER = #{collectionNumber,jdbcType=INTEGER}
   </update>
+
+  <!--根据页面需求查询已收藏的单词-->
+  <select id="selectByPageLimit" parameterType="Map" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    from word_collection
+    <where>
+      USER_ID = #{userId,jdbcType=VARCHAR}
+    </where>
+    ORDER  BY COLLECTION_NUMBER ASC
+    <if test="start!=null and size!=null">
+      limit #{start},#{size}
+    </if>
+  </select>
+
 </mapper>

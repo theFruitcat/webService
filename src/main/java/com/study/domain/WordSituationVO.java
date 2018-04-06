@@ -3,7 +3,7 @@ package com.study.domain;
  * 情境单词实体类
  *
  * */
-public class WordStituationVO {
+public class WordSituationVO {
     //单词名称
     private String name;
     //声音地址

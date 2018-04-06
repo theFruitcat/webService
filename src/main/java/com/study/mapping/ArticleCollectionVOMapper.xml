@@ -76,9 +76,9 @@
     where USER_ID = #{userId,jdbcType=VARCHAR}
       and ARTICLE_ID = #{articleId,jdbcType=INTEGER}
   </update>
-
-  <select id="selectAll" parameterType="Map" resultType="com.study.domain.ArticleCollectionVO">
-    SELECT *
+<!--根据页面限制批量查询收藏文章-->
+  <select id="selectAll" parameterType="Map" resultMap="BaseResultMap">
+    SELECT  <include refid="Base_Column_List" />
     from article_collection
       <where>
           USER_ID = #{userId,jdbcType=VARCHAR}

@@ -1,7 +1,7 @@
 package com.study.controller;
 
 import com.study.domain.UserVO;
-import com.study.service.UserInfoServiceImpl;
+import com.study.service.impl.UserInfoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = "/MY" ,method = RequestMethod.GET)
 public class MyController {
     @Autowired
-    @Qualifier("userInfoService")
+    @Qualifier("UserInfoService")
     UserInfoServiceImpl userService;
 
     @RequestMapping("/INDEX")

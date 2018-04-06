@@ -18,9 +18,18 @@
     <!-- 加载映射文件 -->
     <mappers>
         <!--<package name="com/study/mapping/*"/>-->
-        <!--<mapper resource="com/study/mapping/UserMapper.xml" />-->
-        <!--<mapper resource="com/ssm/chapter12/sql/mapper/RoleMapper.xml" />-->
         <mapper resource="com/study/mapping/UserVOMapper.xml"/>
         <mapper resource="com/study/mapping/ArticleCollectionVOMapper.xml"/>
+        <mapper resource="com/study/mapping/AdministratorVOMapper.xml"/>
+        <mapper resource="com/study/mapping/ArticleVOMapper.xml"/>
+        <mapper resource="com/study/mapping/CommentVOMapper.xml"/>
+        <mapper resource="com/study/mapping/StudyProgressVOMapper.xml"/>
+        <mapper resource="com/study/mapping/TestRecordVOMapper.xml"/>
+        <mapper resource="com/study/mapping/WordCollectionVOMapper.xml"/>
+        <mapper resource="com/study/mapping/WordRecitedVOMapper.xml"/>
+        <!--<mapper resource="com/study/mapping/WordReciteNumberVOMapper.xml"/>-->
+        <mapper resource="com/study/mapping/WordReciteVOMapper.xml"/>
+        <mapper resource="com/study/mapping/WordSituationNumberVOMapper.xml"/>
+        <mapper resource="com/study/mapping/WordSituationVOMapper.xml"/>
     </mappers>
 </configuration>

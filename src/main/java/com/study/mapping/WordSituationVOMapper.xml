@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.study.dao.WordStituationVOMapper">
+<mapper namespace="com.study.dao.WordSituationVOMapper">
 
-  <resultMap id="BaseResultMap" type="com.study.domain.WordStituationVO">
+  <resultMap id="BaseResultMap" type="com.study.domain.WordSituationVO">
     <id column="NAME" jdbcType="VARCHAR" property="name" />
     <result column="VOICE_ADDRESS" jdbcType="VARCHAR" property="voiceAddress" />
     <result column="PICTURE_ADDRESS" jdbcType="VARCHAR" property="pictureAddress" />
@@ -25,14 +25,14 @@
     where NAME = #{name,jdbcType=VARCHAR}
   </delete>
 
-  <insert id="insert" parameterType="com.study.domain.WordStituationVO">
+  <insert id="insert" parameterType="com.study.domain.WordSituationVO">
     insert into word_situation (NAME, VOICE_ADDRESS, PICTURE_ADDRESS, 
       CHINESE_TRANSLATION)
     values (#{name,jdbcType=VARCHAR}, #{voiceAddress,jdbcType=VARCHAR}, #{pictureAddress,jdbcType=VARCHAR}, 
       #{chineseTranslation,jdbcType=VARCHAR})
   </insert>
 
-  <insert id="insertSelective" parameterType="com.study.domain.WordStituationVO">
+  <insert id="insertSelective" parameterType="com.study.domain.WordSituationVO">
     insert into word_situation
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="name != null">
@@ -64,7 +64,7 @@
     </trim>
   </insert>
 
-  <update id="updateByPrimaryKeySelective" parameterType="com.study.domain.WordStituationVO">
+  <update id="updateByPrimaryKeySelective" parameterType="com.study.domain.WordSituationVO">
     update word_situation
     <set>
       <if test="voiceAddress != null">
@@ -80,7 +80,7 @@
     where NAME = #{name,jdbcType=VARCHAR}
   </update>
 
-  <update id="updateByPrimaryKey" parameterType="com.study.domain.WordStituationVO">
+  <update id="updateByPrimaryKey" parameterType="com.study.domain.WordSituationVO">
     update word_situation
     set VOICE_ADDRESS = #{voiceAddress,jdbcType=VARCHAR},
       PICTURE_ADDRESS = #{pictureAddress,jdbcType=VARCHAR},
