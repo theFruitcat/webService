@@ -14,8 +14,6 @@ public interface UserInfoService {
     int deleteUser(String userId);
     //更新用户
     int updateUser(UserVO record);
-    //查询用户的学习进度
-    StudyProgressVO getStudyProgress(String userId);
     //查询用户已背诵的单词
     List<WordRecitedVO> getRecitedWords(Map<String, Object> map);
     //查询用户收藏的单词

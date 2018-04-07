@@ -7,6 +7,8 @@
     <result column="VOICE_ADDRESS" jdbcType="VARCHAR" property="voiceAddress" />
     <result column="PICTURE_ADDRESS" jdbcType="VARCHAR" property="pictureAddress" />
     <result column="CHINESE_TRANSLATION" jdbcType="VARCHAR" property="chineseTranslation" />
+    <result column="SITUATION" jdbcType="VARCHAR" property="situation" />
+    <result column="NUMBER" jdbcType="INTEGER" property="number" />
   </resultMap>
 
   <sql id="Base_Column_List">
@@ -87,4 +89,16 @@
       CHINESE_TRANSLATION = #{chineseTranslation,jdbcType=VARCHAR}
     where NAME = #{name,jdbcType=VARCHAR}
   </update>
+
+    <!--根据页面需求查询背诵的单词 必传参数:情境ID,开始编号,截止编号-->
+    <select id="getSituationWords" parameterType="Map" resultMap="BaseResultMap">
+        SELECT t1.*,t2.NUMBER,t2.SITUATION
+        from word_situation t1,word_situation_number t2
+        where t1.`NAME` = t2.`NAME`
+        AND SITUATION = #{situation,jdbcType=VARCHAR}
+        ORDER BY NUMBER ASC
+        <if test="start!=null and size!=null">
+            limit #{start},#{size}
+        </if>
+    </select>
 </mapper>

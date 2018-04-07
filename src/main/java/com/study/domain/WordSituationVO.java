@@ -12,7 +12,26 @@ public class WordSituationVO {
     private String pictureAddress;
     //中文翻译
     private String chineseTranslation;
+    //情境
+    private String situation;
+    //单词编号
+    private Integer number;
 
+    public String getSituation() {
+        return situation;
+    }
+
+    public void setSituation(String situation) {
+        this.situation = situation == null ? null : situation.trim();
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
     public String getName() {
         return name;
     }

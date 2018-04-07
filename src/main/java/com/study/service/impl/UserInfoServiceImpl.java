@@ -39,26 +39,22 @@ public class UserInfoServiceImpl implements UserInfoService{
     @Override
     //注册用户
     public int registUser(UserVO uservo) {
+
         return userDao.insertSelective(uservo);
     }
 
     @Override
     //删除用户
     public int deleteUser(String userId) {
+
         return userDao.deleteByPrimaryKey(userId);
     }
 
     @Override
     //更新用户的信息
     public int updateUser(UserVO record) {
+
         return userDao.updateByPrimaryKeySelective(record);
-    }
-
-
-    @Override
-    //查询用户的学习进度
-    public StudyProgressVO getStudyProgress (String userId) {
-        return studyProgressDao.selectByPrimaryKey(userId);
     }
 
     @Override

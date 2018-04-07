@@ -1,7 +1,11 @@
 package com.study.dao;
 
+import com.study.domain.WordReciteVO;
 import com.study.domain.WordSituationVO;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface WordSituationVOMapper {
@@ -17,4 +21,6 @@ public interface WordSituationVOMapper {
     int updateByPrimaryKeySelective(WordSituationVO record);
     //更新情境单词
     int updateByPrimaryKey(WordSituationVO record);
+    //批量获取情境单词
+    List<WordSituationVO> getSituationWords(Map<String, Object> map);
 }

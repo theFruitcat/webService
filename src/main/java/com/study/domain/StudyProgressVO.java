@@ -15,8 +15,9 @@ public class StudyProgressVO {
     private Integer currentNumber;
     //背诵时间
     private Date reciteTime;
+
     //是否完成当前任务
-    private boolean passed;
+    private String passed;
 
     public String getUserId() {
         return userId;
@@ -48,6 +49,14 @@ public class StudyProgressVO {
 
     public void setReciteTime(Date reciteTime) {
         this.reciteTime = reciteTime;
+    }
+
+    public String getPassed() {
+        return passed;
+    }
+
+    public void setPassed(String passed) {
+        this.passed = passed;
     }
 
 }

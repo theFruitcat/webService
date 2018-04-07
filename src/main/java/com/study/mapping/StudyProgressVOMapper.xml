@@ -4,13 +4,14 @@
 
   <resultMap id="BaseResultMap" type="com.study.domain.StudyProgressVO">
     <id column="USER_ID" jdbcType="VARCHAR" property="userId" />
-    <result column="CATEGORY_ID" jdbcType="INTEGER" property="categoryId" />
-    <result column="CURRENT_NUMBER" jdbcType="INTEGER" property="currentNumber" />
-    <result column="RECITE_TIME" jdbcType="TIMESTAMP" property="reciteTime" />
+      <result column="CATEGORY_ID" jdbcType="INTEGER" property="categoryId" />
+      <result column="CURRENT_NUMBER" jdbcType="INTEGER" property="currentNumber" />
+      <result column="RECITE_TIME" jdbcType="TIMESTAMP" property="reciteTime" />
+      <result column="IS_PASSED" jdbcType="VARCHAR" property="passed"/>
   </resultMap>
 
   <sql id="Base_Column_List">
-    USER_ID, CATEGORY_ID, CURRENT_NUMBER, RECITE_TIME
+    USER_ID, CATEGORY_ID, CURRENT_NUMBER, RECITE_TIME,IS_PASSED
   </sql>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
@@ -47,6 +48,9 @@
       <if test="reciteTime != null">
         RECITE_TIME,
       </if>
+        <if test="passed != null">
+        IS_PASSED,
+        </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -60,6 +64,9 @@
       </if>
       <if test="reciteTime != null">
         #{reciteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="passed != null">
+        #{passed,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -76,6 +83,7 @@
       <if test="reciteTime != null">
         RECITE_TIME = #{reciteTime,jdbcType=TIMESTAMP},
       </if>
+        IS_PASSED = #{passed,jdbcType=VARCHAR}
     </set>
     where USER_ID = #{userId,jdbcType=VARCHAR}
   </update>
@@ -85,6 +93,7 @@
     set CATEGORY_ID = #{categoryId,jdbcType=INTEGER},
       CURRENT_NUMBER = #{currentNumber,jdbcType=INTEGER},
       RECITE_TIME = #{reciteTime,jdbcType=TIMESTAMP}
+      IS_PASSED = #{passed,jdbcType=VARCHAR}
     where USER_ID = #{userId,jdbcType=VARCHAR}
   </update>
 </mapper>

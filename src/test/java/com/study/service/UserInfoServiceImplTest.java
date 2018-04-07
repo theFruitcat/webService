@@ -93,11 +93,5 @@ public class UserInfoServiceImplTest extends TestCase {
         }
     }
 
-    @Test
-    //测试查询用户的学习进度
-    public void testGetStudyProgress(){
-        String id = "771984187";
-        StudyProgressVO studyProgressVO = userService.getStudyProgress(id);
-        System.out.printf(" " + studyProgressVO.getUserId());
-    }
+
 }
