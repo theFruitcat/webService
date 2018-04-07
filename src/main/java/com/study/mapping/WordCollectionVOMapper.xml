@@ -10,6 +10,7 @@
   <sql id="Base_Column_List">
     USER_ID, CATEGORY_ID, COLLECTION_NUMBER, NAME
   </sql>
+
   <select id="selectByPrimaryKey" parameterType="com.study.domain.WordCollectionVOKey" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -18,18 +19,21 @@
       and CATEGORY_ID = #{categoryId,jdbcType=INTEGER}
       and COLLECTION_NUMBER = #{collectionNumber,jdbcType=INTEGER}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="com.study.domain.WordCollectionVOKey">
     delete from word_collection
     where USER_ID = #{userId,jdbcType=VARCHAR}
       and CATEGORY_ID = #{categoryId,jdbcType=INTEGER}
       and COLLECTION_NUMBER = #{collectionNumber,jdbcType=INTEGER}
   </delete>
+
   <insert id="insert" parameterType="com.study.domain.WordCollectionVO">
     insert into word_collection (USER_ID, CATEGORY_ID, COLLECTION_NUMBER, 
       NAME)
     values (#{userId,jdbcType=VARCHAR}, #{categoryId,jdbcType=INTEGER}, #{collectionNumber,jdbcType=INTEGER}, 
       #{name,jdbcType=VARCHAR})
   </insert>
+
   <insert id="insertSelective" parameterType="com.study.domain.WordCollectionVO">
     insert into word_collection
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -61,6 +65,7 @@
       </if>
     </trim>
   </insert>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.study.domain.WordCollectionVO">
     update word_collection
     <set>
@@ -72,6 +77,7 @@
       and CATEGORY_ID = #{categoryId,jdbcType=INTEGER}
       and COLLECTION_NUMBER = #{collectionNumber,jdbcType=INTEGER}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="com.study.domain.WordCollectionVO">
     update word_collection
     set NAME = #{name,jdbcType=VARCHAR}
