@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 /**
  * 管理员实体类接口
  * */
+//该注解代表是持久化接口
 @Repository
 public interface AdministratorVOMapper {
     //根据ID删除管理员

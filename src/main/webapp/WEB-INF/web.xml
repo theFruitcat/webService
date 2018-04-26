@@ -3,6 +3,7 @@
          xmlns="http://java.sun.com/xml/ns/javaee"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
+
     <display-name>Archetype Created Web Application</display-name>
 
     <!-- Spring和mybatis的配置文件 -->
@@ -10,6 +11,29 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:Spring-myBaties.xml</param-value>
     </context-param>
+
+    <!-- log4j 配置 -->
+    <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>classpath:log4j.properties</param-value>
+        <!-- <param-value>/WEB-INF/log4j.xml</param-value> -->
+    </context-param>
+
+
+    <!-- Spring监听器 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <!-- 防止Spring内存溢出监听器 -->
+    <listener>
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+    </listener>
+
+
+    <listener>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
+
     <!-- 编码过滤器 -->
     <filter>
         <filter-name>encodingFilter</filter-name>
@@ -22,16 +46,8 @@
     </filter>
     <filter-mapping>
         <filter-name>encodingFilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/</url-pattern>
     </filter-mapping>
-    <!-- Spring监听器 -->
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-    <!-- 防止Spring内存溢出监听器 -->
-    <listener>
-        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
-    </listener>
 
     <!-- Spring MVC servlet -->
     <servlet>
@@ -42,7 +58,7 @@
             <param-value>classpath:spring-mvc.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
-        <async-supported>true</async-supported>
+        <!--<async-supported>true</async-supported>-->
     </servlet>
     <servlet-mapping>
         <servlet-name>SpringMVC</servlet-name>
@@ -56,7 +72,11 @@
     <!--</servlet-mapping>-->
 
     <welcome-file-list>
-        <welcome-file>/index.jsp</welcome-file>
+        <!--<welcome-file>/index.jsp</welcome-file>-->
+        <welcome-file>/index.html</welcome-file>
     </welcome-file-list>
-
+    <!--错误页面-->
+    <error-page>
+        <location>/404.html</location>
+    </error-page>
 </web-app>

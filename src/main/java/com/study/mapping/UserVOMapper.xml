@@ -131,7 +131,7 @@
     update user
     <set>
       <if test="password != null">
-        PASSWORD = #{password,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
       </if>
       <if test="registDate != null">
         REGIST_DATE = #{registDate,jdbcType=DATE},

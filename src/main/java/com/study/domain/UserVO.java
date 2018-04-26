@@ -1,5 +1,7 @@
 package com.study.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 /**
  * 用户实体类
@@ -10,6 +12,7 @@ public class UserVO {
     //用户密码
     private String password;
     //注册时间
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date registDate;
     //等级,即背诵单词的等级
     private String level;

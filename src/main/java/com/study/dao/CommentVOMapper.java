@@ -4,6 +4,9 @@ import com.study.domain.CommentVO;
 import com.study.domain.CommentVOKey;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Map;
+
 @Repository
 public interface CommentVOMapper {
     //删除评论
@@ -20,4 +23,6 @@ public interface CommentVOMapper {
     int updateByPrimaryKeyWithBLOBs(CommentVO record);
     //更新评论
     int updateByPrimaryKey(CommentVO record);
+    //批量查询评论
+    List<CommentVO> getComments(Map<String,Object> map);
 }

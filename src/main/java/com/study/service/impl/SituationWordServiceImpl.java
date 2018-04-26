@@ -5,9 +5,13 @@ import com.study.domain.WordSituationVO;
 import com.study.service.SituationWordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Map;
+
+/**
+ * 情境单词处理
+ * @author gaoziming
+ * */
 @Service("SituationWordService")
 public class SituationWordServiceImpl implements SituationWordService{
     @Autowired

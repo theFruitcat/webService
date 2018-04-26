@@ -10,7 +10,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
-
+/**
+ * 背诵单词处理
+ * @author gaoziming
+ * */
 @Service("ReciteWordService")
 public class ReciteWordServiceImpl implements ReciteWordService {
 

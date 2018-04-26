@@ -153,4 +153,18 @@
       PASSED = #{passed,jdbcType=VARCHAR}
     where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
   </update>
+
+  <!--根据页面需求批量查询文章-->
+  <select id="selectByPageLimit" parameterType="Map" resultMap="BaseResultMap">
+    SELECT
+      <include refid="Base_Column_List" />
+      ,
+      <include refid="Blob_Column_List" />
+    from article
+    ORDER  BY TIME ASC
+    <if test="start!=null and size!=null">
+      limit #{start},#{size}
+    </if>
+  </select>
+
 </mapper>

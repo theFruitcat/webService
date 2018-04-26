@@ -26,8 +26,8 @@ public class MyController {
     }
     @RequestMapping("/getUserInfo")
     @ResponseBody
-    public UserVO getUserInfo(@RequestAttribute String id ){
-        UserVO user = userService.getUserInfo(id);
+    public UserVO getUserInfo(){//@RequestAttribute String id
+        UserVO user = userService.getUserInfo("771984187");
         return user;
     }
 }

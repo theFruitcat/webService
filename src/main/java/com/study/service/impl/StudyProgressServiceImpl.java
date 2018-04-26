@@ -5,7 +5,10 @@ import com.study.domain.StudyProgressVO;
 import com.study.service.StudyProgressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+/**
+ * 学习进度处理
+ * @author gaoziming
+ * */
 @Service("StudyProgressService")
 public class StudyProgressServiceImpl implements StudyProgressService{
 

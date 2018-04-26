@@ -33,10 +33,10 @@
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="com.study.domain.CommentVOKey">
-    delete from comment
-    where COMMENT_ID = #{commentId,jdbcType=INTEGER}
-      and ARTICLE_ID = #{articleId,jdbcType=INTEGER}
-  </delete>
+  delete from comment
+  where COMMENT_ID = #{commentId,jdbcType=INTEGER}
+  and ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+</delete>
 
   <insert id="insert" parameterType="com.study.domain.CommentVO">
     insert into comment (COMMENT_ID, ARTICLE_ID, NAME, 
@@ -129,4 +129,18 @@
     where COMMENT_ID = #{commentId,jdbcType=INTEGER}
       and ARTICLE_ID = #{articleId,jdbcType=INTEGER}
   </update>
+
+  <select id="getComments" parameterType="Map" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from comment
+      WHERE ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+    ORDER  BY COMMENT_TIME ASC
+    <if test="start!=null and size!=null">
+      limit #{start},#{size}
+    </if>
+  </select>
+
 </mapper>
