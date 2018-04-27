@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册用户</title>
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link href="static/css/prettyPhoto.css" rel="stylesheet">
+    <link href="static/css/animate.min.css" rel="stylesheet">
+    <link href="static/css/main.css" rel="stylesheet">
+    <link href="static/css/responsive.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: url("static/images/login.jpg") repeat;
+        }
+        .btn-primary{
+            border-color: #e7897f;
+            background-color: #e7897f;
+        }
+        .register {
+            width: 300px;
+            height: 350px;
+            border: 3px solid #c1d1c7;
+            border-radius: 50px;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+        .register-top {
+            height: 50px;
+            width: 100%;
+            border-bottom: 3px solid #e7897f;
+            text-align: center;
+            font-size: 19px;
+            font-weight: 700;
+            line-height: 50px;
+            border-radius: 25px 25px 0 0 ;
+        }
+        .register_fields {
+            text-align: center;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .input-group{
+            margin-bottom: 20px;
+        }
+        /*.password{*/
+            /*margin-bottom: 20px;*/
+        /*}*/
+        .search {
+            font-size: 22px;
+            font-weight: 700;
+        }
+        .warning{
+            color: red;
+        }
+    </style>
+
+</head>
+<body>
+
+<header id="header">
+    <div class="navbar navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">外语学习网站</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="index.html">
+                    <h1><img src="static/images/logo-1.png" alt="logo"></h1>
+                </a>
+
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="index.html">首页</a></li>
+                    <li class="dropdown"><a href="#">应用 <i class="fa fa-angle-down"></i></a>
+                        <ul role="menu" class="sub-menu">
+                            <li><a href="aboutus.html">单词训练</a></li>
+                            <li><a href="reciteWord.html">单词释义</a></li>
+                            <li><a href="service.html">教程</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="blog.html">论坛 <i class="fa fa-angle-down"></i></a>
+                        <ul role="menu" class="sub-menu">
+                            <li><a href="blog.html">练习</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="index.html">关于我们</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="search">
+                <form role="form">
+                    <i class="fa fa-search"></i>
+                    <div class="field-toggle">
+                        <input type="text" class="search-form" autocomplete="off" placeholder="Search">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<!--/#header-->
+
+<div class='register'>
+    <div class='register-top'>
+        <h1>用户注册</h1>
+    </div>
+    <div class='register_fields'>
+        <div class="input-group user">
+            <span class="input-group-addon "><i class="fa fa-user fa-fw"></i></span>
+            <input class="form-control" id = "username" type="text" placeholder="请输入账号">
+        </div>
+
+        <div class="input-group password">
+            <span class="input-group-addon "><i class="fa fa-key fa-fw"></i></span>
+            <input class="form-control" id = "password" type="password" placeholder="请输入密码">
+        </div>
+
+        <div class="input-group email">
+            <span class="input-group-addon "><i class="fa fa-star-half-o fa-fw"></i></span>
+            <input class="form-control" id = "email" type="email" placeholder="请输入邮箱">
+        </div>
+
+    </div>
+
+    <div class='register_fields__submit'>
+        <button type="button" class="btn btn-primary btn-block">登录</button>
+    </div>
+</div>
+
+<script>
+
+    // window.onload
+    //     = function() {
+    //     $(".register_fields__submit").click(function () {
+    //         // var passed = true;
+    //         // console.log(passed);
+    //         // if(passed==true){
+    //         //     register();
+    //         // }
+    //         //获取注册表单参数
+    //         var username = $("#username").val();
+    //         var password = $("#password").val();
+    //         var email = $("#email").val();
+    //         //拼装参数
+    //         user = {}
+    //         user.username = username;
+    //         user.password = password;
+    //         user.email = email;
+    //         //生成json字符串
+    //         var user1 = JSON.stringify(user);
+    //         console.log(user1);
+    //     });};
+</script>
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="static/js/gmaps.js"></script>
+<script type="text/javascript" src="static/js/wow.min.js"></script>
+<script src="static/js/register.js"/>
+<script type="text/javascript" src="static/js/main.js"></script>
+
+</body>
+</html>
