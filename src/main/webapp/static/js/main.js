@@ -49,7 +49,6 @@ jQuery(function($) {'use strict';
 		}
 
 	});
-
     //提交ajax请求 判断用户的登录状态
     $.ajax({
         url:"./userInfo/getStatus",

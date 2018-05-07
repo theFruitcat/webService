@@ -7,6 +7,8 @@ import com.study.domain.*;
 import com.study.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +17,7 @@ import java.util.Map;
  * @author gaoziming
  * */
 @Service("ArticleService")
+@Transactional
 public class ArticleServiceImpl implements ArticleService{
 
     @Autowired

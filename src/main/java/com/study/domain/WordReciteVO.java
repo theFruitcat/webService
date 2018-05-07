@@ -14,7 +14,7 @@ public class WordReciteVO extends WordReciteVOKey {
     private String exampleSentence;
     //例句释义
     private String sentenceTranslate;
-    //图片编号
+    //单词编号
     private Integer number;
 
     public String getVoiceAddress() {

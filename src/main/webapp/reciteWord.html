@@ -122,7 +122,7 @@
             top: 15px;
             width: 50px;
             height: 50px;
-            
+
         }
         /*收藏*/
         .collect {
@@ -132,21 +132,64 @@
             padding: 42px;
             position: relative;
         }
+        /*收藏按钮*/
         .collect-btn {
             position: absolute;
             left: -21px;
             bottom: 100px;
             margin-left: 50%;
         }
+        /*上一个单词*/
         .last{
             position: absolute;
             left: 70%;
             top:80%;
         }
+        /*下一个单词*/
         .next{
             position: absolute;
             /*left: 80%;*/
             top:80%;
+        }
+        /*测试*/
+        .test{
+            border: 1px dashed #0a5a90;
+            position: relative;
+            height: 400px;
+            width:800px;
+            text-align:center;
+            /*width:100%;*/
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 50px;
+            /*margin-top: 100px;*/
+            /*margin-bottom: auto;*/
+        }
+        /*测试盒子*/
+        .testDiv{
+            margin-top: 40px;
+        }
+        /*回答正确*/
+        .true{
+            margin-top: 30px;
+            color: green;
+        }
+        /*回答错误*/
+        .false{
+            margin-top: 30px;
+            color: red;
+            text-align: center;
+        }
+        /*测试单词*/
+        .testWord{
+            width: 200px;
+            margin-right: 40px;
+            margin-left: 40px;
+            font-size: 25px;
+        }
+        /*单词翻译*/
+        #wordTranslation{
+            color: #e7897f;
         }
     </style>
 </head><!--/head-->
@@ -166,7 +209,7 @@
                     <a class="navbar-brand" href="index.html">
                         <h1><img src="static/images/logo-1.png" alt="logo"></h1>
                     </a>
-                    
+
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -209,49 +252,32 @@
             </button>
             <div class="record-history">
                 <ul class="record-ul">
-                    <!--<li><a href="#"><h4>Hello world!</h4></a></li>-->
-                    <!--<li><a href="#"><h4>Hello world!</h4></a></li>-->
-                    <!--<li><a href="#"><h4>Hello world!</h4></a></li>-->
-                    <!--<li><a href="#"><h4>Hello world!</h4></a></li>-->
-                    <!--<li><a href="#"><h4>Hello world!</h4></a></li>-->
                 </ul>
             </div>
             <button class="btn collect-btn">收藏</button>
         </div>
         <div class="current-img">
-            <img class="current-imgs" src="static/images/reciteWord/apple.jpg" alt="11"/>
-            <!--<button class="current-img-btn">-->
-                <!--上一个-->
-            <!--</button>-->
+            <img id = "wordPicture" class="current-imgs" src="" alt="11"/>
             <i class="last btn  fa fa-arrow-circle-left fa-5x"></i>
         </div>
 
         <div class="current-word">
             <div class="current-words">
-                <h1 id="word">apple<i class="fa btn fa-volume-down fa-1x fa-fw"></i></h1>
-                <!--<button class="current-son">-->
-                    <!--播放声音-->
-                <!--</button>-->
+                <h1 id="word"><span></span><i id="audio" class="fa btn fa-volume-down fa-1x fa-fw"></i></h1>
 
             </div>
 
             <div class="current-paraphrase">
                 <h2>单词释义：</h2>
-                <h2 id="translate">苹果</h2>
-                <h2 id = "sentence">a round fruit with shiny red or green skin and firm white flesh
-                <small>圆形的水果，有闪亮的红色或绿色的皮肤和坚实的白色果肉。</small>
+                <h2 id="translate"></h2>
+                <h2 id = "sentence"><span></span>
+                <small id = "sentenceTranslate"></small>
                 </h2>
 
             </div>
             <i class="next btn fa fa-arrow-circle-right fa-5x"></i>
-            <!--<button class="current-word-btn">-->
-                <!--下一个-->
-            <!--</button>-->
 
         </div>
-        <!--<div class="collect">-->
-            <!--c-->
-        <!--</div>-->
     </div>
 
 
@@ -259,7 +285,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 text-center bottom-separator">
-                    <img src="static/images/home/under.png" class="img-responsive inline" alt="">
+                    <img  src="static/images/home/under.png" class="img-responsive inline" alt="">
                 </div>
                 <div class="col-sm-12">
                     <div class="copyright-text text-center">
@@ -274,10 +300,15 @@
 
     <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="static/js/lightbox.min.js"></script>
+    <!--<script type="text/javascript" src="static/js/lightbox.min.js"></script>-->
     <script type="text/javascript" src="static/js/wow.min.js"></script>
     <script type="text/javascript" src="static/js/jquery.countTo.js"></script>
+    <!--<script type="text/javascript" src="static/js/status.js"/>-->
+    <script src="https://code.createjs.com/1.0.0/easeljs.min.js"></script>
+    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+    <script src="https://code.createjs.com/1.0.0/soundjs.min.js"></script>
+    <script type="text/javascript" src="static/js/reciteWord.js"></script>
     <script type="text/javascript" src="static/js/main.js"></script>
-   
+
 </body>
 </html>

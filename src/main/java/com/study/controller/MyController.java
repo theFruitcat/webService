@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class MyController {
     @Autowired
     @Qualifier("UserInfoService")
-    UserInfoServiceImpl userService;
+    UserInfoServiceImpl UserInfoService;
 
     @RequestMapping("/INDEX")
     public ModelAndView index() throws  Exception{
@@ -27,7 +27,7 @@ public class MyController {
     @RequestMapping("/getUserInfo")
     @ResponseBody
     public UserVO getUserInfo(){//@RequestAttribute String id
-        UserVO user = userService.getUserInfo("771984187");
+        UserVO user = UserInfoService.getUserInfo("771984187");
         return user;
     }
 }

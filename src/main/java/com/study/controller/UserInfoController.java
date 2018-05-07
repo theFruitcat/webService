@@ -19,13 +19,16 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 处理用户登录注册,以及信息显示修改
+ * */
 @Controller
 @RequestMapping(value = "userInfo")
 public class UserInfoController {
 
     @Autowired
     @Qualifier("UserInfoService")
-    UserInfoServiceImpl userService;
+    UserInfoServiceImpl UserInfoService;
 
     /**
      * 判断用户是否已经登录
@@ -42,21 +45,19 @@ public class UserInfoController {
         userID = (String)session.getAttribute("userID");
         alias = (String)session.getAttribute("alias");
 
-//        response.setContentType("application/json;charset=UTF-8");
-//        response.reset();
-
         //将数据转化成json格式传给前台
         ObjectMapper mapper = new ObjectMapper(); //转换器
         Map map=new HashMap();
         map.put("userID",userID);
         map.put("alias",alias);
         String json = "";
+        //将map格式转化为json格式
         try {
             json=mapper.writeValueAsString(map);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        //判断用户ID是否为空,即用户当前是否登录
         if(userID != null){
             return json;
         }
@@ -73,7 +74,7 @@ public class UserInfoController {
     @ResponseBody
     public UserVO getUserInfo(@RequestParam String userId){//@RequestAttribute String id
 //        UserVO user = userService.getUserInfo("771984187");
-        UserVO user = userService.getUserInfo(userId);
+        UserVO user = UserInfoService.getUserInfo(userId);
         return user;
     }
 
@@ -85,7 +86,7 @@ public class UserInfoController {
     @RequestMapping(value = "/regist" ,method = RequestMethod.POST)
     @ResponseBody
     public int Register(@RequestBody UserVO user){
-        UserVO olduser = userService.getUserInfo(user.getUserId());
+        UserVO olduser = UserInfoService.getUserInfo(user.getUserId());
 
 
         int number;
@@ -100,7 +101,7 @@ public class UserInfoController {
             System.out.println(user.getUserId());
             System.out.println(user.getPassword());
             System.out.println(user.getRegistDate());
-            number = userService.registUser(user);
+            number = UserInfoService.registUser(user);
             return number;
         }
         else{
@@ -122,7 +123,7 @@ public class UserInfoController {
         String userID = user.getUserId();
         String userPassWord = user.getPassword();
         //根据登录用户ID获取真实用户信息
-        UserVO trueUser = userService.getUserInfo(userID);
+        UserVO trueUser = UserInfoService.getUserInfo(userID);
         //number标识符,1代码验证通过,2代表验证失败 默认失败
         int number = 2;
         String truePassWord = trueUser.getPassword();
@@ -145,6 +146,6 @@ public class UserInfoController {
     @RequestMapping(value = "/updateUserInfo" ,method = RequestMethod.POST)
     @ResponseBody
     public int update(@RequestBody UserVO user){
-        return userService.updateUser(user);
+        return UserInfoService.updateUser(user);
     }
 }
