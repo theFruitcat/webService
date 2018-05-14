@@ -9,18 +9,22 @@
     var initialWords;
     //背诵单词
     var reciteWords = new Array();
-    //复习单词
+    //复习单词(即测试单词)
     var reviewWords = new Array();
     //当前背诵单词数量
     var topReciteWord = 0;
     //当前复习单词数量
     var topReviewWord = 0;
+    //该变量用于判断单词是否为最后几个单词,即小于预设的四个单词,默认单词数量为4
+    var endWord = 4;
     //测试的次数
     var testNumber = 0;
     //复习列表编号
     var reviewNumber = 0;
     //当前背诵编号
     var currentNumber =0;
+    //总共剩余单词数量(背诵单词数量+复习单词数量)
+    var totalWords = 0;
     //用户数据
     var data = {};
     //测试题
@@ -46,7 +50,7 @@
         wordInitialization(reciteWords);
         first = false;
     }
-
+    totalWords = reciteWords.length;
     console.log(reciteWords);
     console.log(reciteWords[1].name);
     console.log(reciteWords[2].name);
@@ -54,15 +58,16 @@
     createjs.Sound.alternateExtensions = ["mp3"];
     createjs.Sound.on("fileload", this.loadHandler, this);
 
-    First = true;
-    //点击下一个单词
+    First = false;
+    //点击下一个单词触发事件
     $(".scene-content").on("click",".next",function () {
 
-                if (currentNumber >= 3) {
-                    if (counter == 8) {
-                        for (var i = 0; i < 4; i++) {
+                if (currentNumber >= endWord - 1 ) {
+                    if (counter == endWord * 2 ) {
+                        for (var i = 0; i < endWord; i++) {
                             //将该单词放入复习队列
-                            reviewWords.splice(reviewNumber, 0, reciteWords[0]);
+                            // reviewWords.splice(reviewNumber, 0, reciteWords[0]);
+                            reviewWords[i] = reciteWords[0];
                             //将该单词从背诵队列中删除
                             reciteWords.splice(0, 1);
                             //复习单词编号加一
@@ -73,12 +78,13 @@
                         }
                         counter = 1;
                     }
-                    currentNumber = currentNumber - 4;
+                    //单词编号重新初始化
+                    currentNumber = currentNumber - endWord;
 
                     // showWords();
                 }
-                if (reviewNumber < 4) {
-                //判断单词是否越界
+                if (reviewNumber < endWord) {
+                //判断单词是否越界 改判断代码有冗余的可能,保留
                 if (currentNumber < topReciteWord - 1) {
                     currentNumber++;
                     counter++;
@@ -124,6 +130,7 @@
     }
 
     );
+    //获取用户信息
     function getuser() {
         var userId;
         //处理用户的登录信息
@@ -198,6 +205,7 @@
     //注册声音
     function loadHandler(event) {
         // 这会引发针对每个已注册的声音。
+        //播放按钮,播放单词声音
         $(".scene-content").on("click","#audio",function () {
         // $("#audio").click(function () {
 
@@ -207,6 +215,7 @@
             var instance = createjs.Sound.play(reciteWords[currentNumber].name);
             instance.on("complete", this.handleComplete, this);
         })
+        //为了满足测试结束后播放下一个单词发音的需求
         $(".scene-content").on("click",".testWord",function () {
             if(testNumber == 4){
                 setTimeout(function () {
@@ -216,6 +225,7 @@
                 },1000)
             }
         })
+        //下一个播放单词发音
         $(".scene-content").on("click",".next",function () {
         // $(".next").click(function () {
             if(reciteWords[currentNumber]== undefined || reviewNumber == 4){
@@ -225,6 +235,7 @@
             instance.on("complete", this.handleComplete, this);
             }
         })
+        //上一个播放单词发音
         $(".scene-content").on("click",".last",function () {
         // $(".last").click(function () {
             var instance = createjs.Sound.play(reciteWords[currentNumber].name);
@@ -278,6 +289,7 @@
         test.options = testWords;
         test.answer = reviewWords[0].name;
         test.questionStem = reviewWords[0].explanation;
+        //将要检测的单词放入到随机的位置,其他位置由后续单词填满
         for(var x = 0; x < i ; x++ ){
             testWords[x]  = reviewWords[x+1].name;
         }
@@ -287,7 +299,7 @@
         }
     }
     //向测试模块添加单词
-    function addTestWord(){
+        function addTestWord(){
         $("#wordTranslation").text(test.questionStem);
         $("#word1").text(testWords[0]);
         $("#word2").text(testWords[1]);
@@ -302,6 +314,10 @@
             if(word == test.answer){
                 //显示正确标识,并进入下一个单词
                 $("#judgement").attr("class","fa fa-check fa-3x fa-fw true");
+                //复习单词数量减一reviewNumber --;
+
+                //总单词数减1
+                totalWords--;
                 exchangeTestWord();
                 setTimeout(function () {
                     $("#judgement").attr("class","");
@@ -312,6 +328,10 @@
             else{
                 //显示错误标识,并进入下一个单词
                 $("#judgement").attr("class","fa fa-remove fa-3x fa-fw false");
+                //复习单词数量减一 reviewNumber --;
+
+                //将学习者选错的单词重新放入背诵单词列表
+                reciteWords.splice(reciteWords.length, 0,reviewWords[0]);
                 exchangeTestWord();
                 setTimeout(function () {
                     $("#judgement").attr("class","");
@@ -319,8 +339,13 @@
                     addTestWord();
                 },500);
             }
+        if(totalWords != 0){
+        //判断测试次数,等于四就跳出测试,进入背诵阶段
         if(testNumber >= 4){
             setTimeout(function () {
+                if(totalWords < 4){
+                    endWord = totalWords;
+                }
                 //初始化reviewNumber
                 reviewNumber = 0;
                 testNumber = 0;
@@ -360,15 +385,20 @@
             wordInitialization(reciteWords);
             },500);
         }
-    })
+        }
+        else{
+            $(".scene-content").empty();
 
+        }
+    })
+    //交换背诵单词
     function exchangeTestWord() {
         var worda;
         worda = reviewWords[0];
         reviewWords[0] = reviewWords[testNumber];
         reviewWords[testNumber] = worda;
     }
-
+    //记录背诵单词(后台)
     function insertRecitedWord(word) {
         var word = JSON.stringify(word);
         $.ajax({

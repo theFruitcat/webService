@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -65,16 +65,6 @@
             margin-right: 30%;
             margin-left: 30%;
         }
-        /*.train {*/
-            /*width: 1170px;*/
-            /*height: 50px;*/
-            /*background-color: blue;*/
-            /*margin: 0 auto;*/
-            /*margin-top: 10px;*/
-            /*margin-bottom: 10px;*/
-            /*position: relative;*/
-            /*background: url("static/images/121.png") repeat;*/
-        /*}*/
         .train button {
             position: absolute;
             left: -36px;
@@ -91,46 +81,6 @@
             background: url("static/images/home/slider-bg.png");
             margin-bottom: 10px;
         }
-        /*.sense-overview {*/
-            /*float: left;*/
-            /*border: 1px dashed black;*/
-            /*width: 180px;*/
-            /*height: 150px;*/
-            /*margin-top: 50px;*/
-            /*text-align: center;*/
-        /*}*/
-        /*.sense-img1 {*/
-            /*float: left;*/
-            /*width: 150px;*/
-            /*height: 150px;*/
-            /*margin-top: 50px;*/
-            /*margin-left: 30px;*/
-        /*}*/
-        /*.sense-img1 img {*/
-            /*width: 150px;*/
-            /*height: 150px;*/
-        /*}*/
-        /*.sense-text {*/
-            /*float: left;*/
-            /*text-align: center;*/
-            /*width: 200px;*/
-            /*height: 150px;*/
-            /*margin-left: 30px;*/
-            /*margin-top: 50px;*/
-            /*border: 1px dashed black;*/
-        /*}*/
-        /*.sense-btn {*/
-            /*float: left;*/
-            /*margin-left: 50px;*/
-            /*margin-top: 111px;*/
-        /*}*/
-        /*.sense-img2 {*/
-            /*float: right;*/
-            /*width: 200px;*/
-            /*height: 200px;*/
-            /*background-color: aqua;*/
-            /*margin-top: 25px;*/
-        /*}*/
         .sense-img2 img {
             width: 200px;
             height: 200px;
@@ -161,8 +111,8 @@
                         <li class="dropdown"><a href="#">应用 <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 <li><a href="aboutus.html">情境训练</a></li>
-                                <li><a href="reciteWord.html">单词训练</a></li>
-                                <li><a href="service.html">文章阅读</a></li>
+                                <li><a href="ReciteSummary.html">单词训练</a></li>
+                                <li><a href="ReciteSummary.html">文章阅读</a></li>
                             </ul>
                         </li>
                         <li class="dropdown"><a href="blog.html">论坛 <i class="fa fa-angle-down"></i></a>
@@ -195,7 +145,7 @@
         </div>
         <div class="summarize-text">
             <p>
-                这是一句总结的话
+                单词背诵
             </p>
         </div>
         <div class="summarize-imgr">
@@ -204,7 +154,7 @@
     </div>
 
     <div class="train" align="center">
-        <a  class="btn btn-common" href="#">开始训练</a>
+        <a  class="btn btn-common" href="#" data-target="#myModal">开始训练</a>
     </div>
 
     <div class="sense">
@@ -212,23 +162,6 @@
             词汇是构成语言最基本的材料，扩大词汇量是提高学生听、说、读，写能力的前提，因此，词汇教学是中学英语教学的重点
             <small>Vocabulary is the most basic material to make up the language. Enlarging vocabulary is the prerequisite for improving students' listening, speaking, reading and writing ability. Therefore, vocabulary teaching is the focus of middle school English teaching.</small>
         </h2>
-        <!--<div class="sense-overview">-->
-            <!--<p>概述意义</p>-->
-        <!--</div>-->
-        <!--<div class="sense-img1">-->
-            <!--<img src="static/images/pic1.png" alt=""/>-->
-
-        <!--</div>-->
-        <!--<div class="sense-text">-->
-            <!--<p>教程意义</p>-->
-        <!--</div>-->
-        <!--<button class="sense-btn" type="button" title="教程" data-container="body" data-toggle="popover" data-placement="bottom" data-content="底部的 Popover 中的一些内容">-->
-            <!--查看教程-->
-        <!--</button>-->
-        <!--<div class="sense-img2">-->
-            <!--<img src="static/images/pic2.png" alt=""/>-->
-        <!--</div>-->
-
     </div>
 
     <footer id="footer">
@@ -247,17 +180,43 @@
             </div>
         </div>
     </footer>
+
+
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>你还没有选择你的能力等级,请根据自己的能力选择自己的外语学习能力等级!</h3>
+                    <h4><input type="radio" name="sex" value="low">外语初级<small>适合英语基础为零或者小学水平的学习者</small></h4><br>
+                    <h4><input type="radio" name="sex" value="middle">外语中级<small>适合英语能力在初中至高中水平的学习者</small></h4><br>
+                    <h4><input type="radio" name="sex" value="high">外语高级<small>适合英语水平在大学及以上的学习者</small></h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="confirm">确认</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
     <!--/#footer-->
-    <script>
-        $(function (){
-            $("[data-toggle='popover']").popover();
-        });
-    </script>
+    <!--<script>-->
+        <!--$(function (){-->
+            <!--$("[data-toggle='popover']").popover();-->
+        <!--});-->
+    <!--</script>-->
 
     <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
-    <script type="static/text/javascript" src="static/js/bootstrap.min.js"></script>
-    <script type="static/text/javascript" src="static/js/lightbox.min.js"></script>
-    <script type="static/text/javascript" src="static/js/wow.min.js"></script>
+    <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/js/lightbox.min.js"></script>
+    <script type="text/javascript" src="static/js/wow.min.js"></script>
+    <!--<script type="text/javascript" src="static/js/status.js"/>-->
+    <script type="text/javascript" src="static/js/ReciteSummary.js"/>
     <script type="static/text/javascript" src="static/js/main.js"></script>
 </body>
 </html>

@@ -50,7 +50,7 @@ public class ReciteWordController {
         if(studyProgressVO == null){
             map.put("categoryId",catagoryId);
             map.put("start",0);
-            map.put("size",20);
+            map.put("size",10);
             listReciteWords = ReciteWordService.getReciteWords(map);
             return listReciteWords;
         }
