@@ -15,11 +15,13 @@
     <result column="ABILITY_LEVEL" jdbcType="VARCHAR" property="abilityLevel" />
     <result column="NUMBER_FAILURE" jdbcType="INTEGER" property="numberFailure" />
     <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="GOAL" jdbcType="VARCHAR" property="goal" />
+    <result column="PICTURE_ADDRESS" jdbcType="INTEGER" property="pictureAddress" />
   </resultMap>
 
   <sql id="Base_Column_List">
     USER_ID, PASSWORD, REGIST_DATE, LEVEL, NAME, ALIAS, AGE, PHONE_NUMBER, INTEGRAL, 
-    ABILITY_LEVEL, NUMBER_FAILURE, EMAIL
+    ABILITY_LEVEL, NUMBER_FAILURE, EMAIL,GOAL,PICTURE_ADDRESS
   </sql>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
@@ -38,12 +40,13 @@
     insert into user (USER_ID, PASSWORD, REGIST_DATE, 
       LEVEL, NAME, ALIAS, 
       AGE, PHONE_NUMBER, INTEGRAL, 
-      ABILITY_LEVEL, NUMBER_FAILURE, EMAIL
+      ABILITY_LEVEL, NUMBER_FAILURE, EMAIL,GOAL,PICTURE_ADDRESS
       )
     values (#{userId,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{registDate,jdbcType=DATE}, 
       #{level,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, 
       #{age,jdbcType=INTEGER}, #{phoneNumber,jdbcType=INTEGER}, #{integral,jdbcType=VARCHAR}, 
-      #{abilityLevel,jdbcType=VARCHAR}, #{numberFailure,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}
+      #{abilityLevel,jdbcType=VARCHAR}, #{numberFailure,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR},#{goal,jdbcType=INTEGER},
+      #{pictureAddress,jdbcType=VARCHAR}
       )
   </insert>
 
@@ -86,6 +89,12 @@
       <if test="email != null">
         EMAIL,
       </if>
+        <if test="goal != null">
+            GOAL,
+        </if>
+        <if test="pictureAddress != null">
+            PICTURE_ADDRESS,
+        </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -124,6 +133,12 @@
       <if test="email != null">
         #{email,jdbcType=VARCHAR},
       </if>
+        <if test="goal != null">
+        #{goal,jdbcType=INTEGER},
+        </if>
+        <if test="pictureAddress != null">
+        #{pictureAddress,jdbcType=VARCHAR},
+        </if>
     </trim>
   </insert>
 
@@ -163,6 +178,12 @@
       <if test="email != null">
         EMAIL = #{email,jdbcType=VARCHAR},
       </if>
+      <if test="goal != null">
+            GOAL = #{goal,jdbcType=INTEGER},
+      </if>
+      <if test="pictureAddress != null">
+            PICTURE_ADDRESS = #{pictureAddress,jdbcType=VARCHAR},
+      </if>
     </set>
     where USER_ID = #{userId,jdbcType=VARCHAR}
   </update>
@@ -179,7 +200,9 @@
       INTEGRAL = #{integral,jdbcType=VARCHAR},
       ABILITY_LEVEL = #{abilityLevel,jdbcType=VARCHAR},
       NUMBER_FAILURE = #{numberFailure,jdbcType=INTEGER},
-      EMAIL = #{email,jdbcType=VARCHAR}
+      EMAIL = #{email,jdbcType=VARCHAR},
+      GOAL = #{goal,jdbcType=INTEGER},
+      PICTURE_ADDRESS = #{pictureAddress,jdbcType=VARCHAR}
     where USER_ID = #{userId,jdbcType=VARCHAR}
   </update>
 </mapper>

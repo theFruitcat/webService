@@ -32,6 +32,10 @@ public class UserVO {
     private Integer numberFailure;
     //邮箱
     private String email;
+    //单词背诵目标
+    private int goal;
+    //头像图片地址
+    private String pictureAddress;
 
     public String getUserId() {
         return userId;
@@ -127,5 +131,21 @@ public class UserVO {
 
     public void setEmail(String email) {
         this.email = email == null ? null : email.trim();
+    }
+
+    public int getGoal() {
+        return goal;
+    }
+
+    public void setGoal(int goal) {
+        this.goal = goal;
+    }
+
+    public String getPictureAddress() {
+        return pictureAddress;
+    }
+
+    public void setPictureAddress(String pictureAddress) {
+        this.pictureAddress = pictureAddress;
     }
 }

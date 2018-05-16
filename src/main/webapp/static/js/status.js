@@ -13,7 +13,7 @@
 
             if(alias != null){
                 $(".login").empty();
-                $(".login").append("<a class ='status' href='../aboutus2.html'>");
+                $(".login").append("<a class ='status' href='../MyHome.html'>");
                 $(".status").append("<p>欢迎 " + alias + "</p>");
             }
             else{

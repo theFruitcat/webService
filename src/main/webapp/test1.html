@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>单词释义</title>
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link href="static/css/lightbox.css" rel="stylesheet">
+    <link href="static/css/animate.min.css" rel="stylesheet">
+    <link href="static/css/main.css" rel="stylesheet">
+    <link href="static/css/responsive.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="static/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="static/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="static/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="static/images/ico/apple-touch-icon-57-precomposed.png">
+    <style>
+        .scene-content {
+            width: 1170px;
+            height: 500px;
+            margin: 0 auto;
+            border: 1px dashed #59fff3;
+            border-bottom: 0px;
+            border-top: 0px;
+            background: url("static/images/home/tour-bg.png");
+        }
+        .test{
+            border: 1px dashed #0a5a90;
+            position: relative;
+            height: 400px;
+            width:800px;
+            text-align:center;
+            /*width:100%;*/
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 50px;
+            /*margin-top: 100px;*/
+            /*margin-bottom: auto;*/
+        }
+        /*记录*/
+        .record {
+            position: relative;
+            width: 200px;
+            height: 100%;
+            /*background-color: blue;*/
+            float: left;
+            padding: 5px;
+        }
+        .record-learn {
+            position: absolute;
+            margin-left: 50%;
+            left: -36px;
+            top: 42px;
+
+        }
+        .record-history {
+            margin-top: 80px;
+            text-align: center;
+
+        }
+        .record-ul {
+            padding: 0px;
+            text-decoration: none;
+            color: black;
+
+        }
+        .record-ul li {
+            color: black;
+        }
+        /*当前图片*/
+        .current-img {
+            width: 384px;
+            height: 100%;
+            position: relative;
+            float: left;
+        }
+        .current-imgs {
+            width: 300px;
+            height: 300px;
+            margin-left: 42px;
+            margin-top: 42px;
+        }
+        .current-img-btn {
+            position: absolute;
+            left: -21px;
+            bottom: 100px;
+            margin-left: 50%;
+
+        }
+        /*当前单词*/
+        .current-word {
+            width: 584px;
+            height: 100%;
+            /*width:100%;*/
+            float: left;
+            padding: 42px;
+            position: relative;
+        }
+        .current-words {
+            /*border: 1px solid black;*/
+            /*height: 80px;*/
+            text-align: center;
+            position: relative;
+        }
+        .current-words h1 {
+            line-height: 80px;
+            color: #1ab0ff;
+            /*font-size: 20px;*/
+            font-weight: 700;
+        }
+        .current-paraphrase {
+            /*border: 1px solid black;*/
+            height: 300px;
+            weight:300px;
+            /*margin-top: 40px;*/
+            /*padding: 20px;*/
+        }
+        .current-word-btn {
+            position: absolute;
+            left: -21px;
+            bottom: 100px;
+            margin-left: 50%;
+        }
+        .current-son {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            width: 50px;
+            height: 50px;
+
+        }
+        /*收藏*/
+        .collect {
+            width: 200px;
+            height: 100%;
+            float: left;
+            padding: 42px;
+            position: relative;
+        }
+        .collect-btn {
+            position: absolute;
+            left: -21px;
+            bottom: 100px;
+            margin-left: 50%;
+        }
+        .last{
+            position: absolute;
+            left: 70%;
+            top:80%;
+        }
+        .next{
+            position: absolute;
+            /*left: 80%;*/
+            top:80%;
+        }
+        .testDiv{
+            margin-top: 40px;
+        }
+        .true{
+            margin-top: 30px;
+            color: green;
+        }
+        .false{
+            margin-top: 30px;
+            color: red;
+            text-align: center;
+        }
+        .testWord{
+            width: 200px;
+            margin-right: 40px;
+            margin-left: 40px;
+            font-size: 25px;
+        }
+        #wordTranslation{
+            color: #e7897f;
+        }
+    </style>
+</head><!--/head-->
+
+<body>
+<header id="header">
+    <div class="navbar navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="index.html">
+                    <h1><img src="static/images/logo-1.png" alt="logo"></h1>
+                </a>
+
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="index.html">首页</a></li>
+                    <li class="dropdown"><a href="#">应用 <i class="fa fa-angle-down"></i></a>
+                        <ul role="menu" class="sub-menu">
+                            <li><a href="aboutus.html">情境训练</a></li>
+                            <li><a href="reciteWord.html">单词训练</a></li>
+                            <li><a href="ReciteSummary.html">文章阅读</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="blog.html">论坛 <i class="fa fa-angle-down"></i></a>
+                        <ul role="menu" class="sub-menu">
+                            <li><a href="blog.html">练习</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="index.html">关于我们</a>
+                    </li>
+                    <li class="dropdown login"><a href="logIn.html">登录</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="search">
+                <form role="form">
+                    <i class="fa fa-search"></i>
+                    <div class="field-toggle">
+                        <input type="text" class="search-form" autocomplete="off" placeholder="Search">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<!--/#header-->
+
+<div class="scene-content">
+    <div class = "test">
+        <h1>恭喜你已经完成了今天的学习目标!</h1>
+        <!--<h1>请选出<span id="wordTranslation"></span>对应的正确单词</h1>-->
+        <!--<div class = "testDiv">-->
+            <!--<button id = "word1" class="btn btn-primary btn-lg testWord"></button>-->
+            <!--<button id = "word2" class="btn btn-primary btn-lg testWord"></button>-->
+        <!--</div>-->
+        <!--<div class = "testDiv">-->
+            <!--<button id = "word3" class="btn btn-primary btn-lg testWord"></button>-->
+            <!--<button id = "word4" class="btn btn-primary btn-lg testWord"></button>-->
+        <!--</div>-->
+        <!--<i id="audio" class="fa fa-remove fa-3x fa-fw false" ></i>-->
+        <!--<button class="btn btn-primary btn-lg change">替换</button>-->
+        <button class="btn btn-primary btn-lg change">返回主页</button>
+    </div>
+</div>
+
+
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center bottom-separator">
+                <img  src="static/images/home/under.png" class="img-responsive inline" alt="">
+            </div>
+            <div class="col-sm-12">
+                <div class="copyright-text text-center">
+                    <p>&copy; Your Company 2014. All Rights Reserved.</p>
+                    <p>Designed by <a target="_blank" href="http://www.jq22.com">Themeum</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--/#footer-->
+
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+<!--<script type="text/javascript" src="static/js/lightbox.min.js"></script>-->
+<script type="text/javascript" src="static/js/wow.min.js"></script>
+<script type="text/javascript" src="static/js/jquery.countTo.js"></script>
+<!--<script type="text/javascript" src="static/js/status.js"/>-->
+<script src="https://code.createjs.com/1.0.0/easeljs.min.js"></script>
+<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+<script src="https://code.createjs.com/1.0.0/soundjs.min.js"></script>
+<script type="text/javascript" src="static/js/reciteWord.js"></script>
+<script type="text/javascript" src="static/js/main.js"></script>
+<script type = "text/javascript" >
+
+    $(".scene-content").on("click",".testWord",function () {
+        // alert("dddd");
+        var word = $(this).text();
+        console.log(word);
+        // alert(word);
+    })
+    $(".scene-content")
+
+    $(".scene-content").on("mouseleave",".testWord",function () {
+
+        var word = $(this).text();
+        console.log(word);
+    }).on("mouseenter",".testWord",function () {
+
+        var word = $(this).text();
+        console.log(word);
+    }).on("click",".testWord",function () {
+        // alert("dddd");
+        var word = $(this).text();
+        console.log(word);
+        alert(word);
+    })
+        // .on("mouseon",".testWord",function () {
+        // // alert("dddd");
+        // var word = $(this).text();
+        // alert(word);
+    // $(".testWord").click(function () {
+    //     alert("dddd");
+    //     var word = $(this).text();
+    // });
+
+    $(".change").click(function hhh() {
+        // $(".test").hide();
+        // //
+        // $(".scene-content").append(" <div class = \"test\">\n" +
+        //     "        <h1>请选出<span id=\"wordTranslation\"></span>对应的正确单词</h1>\n" +
+        //     "        <div class = \"testDiv\">\n" +
+        //     "            <button id = \"word1\" class=\"btn btn-primary btn-lg testWord\">123</button>\n" +
+        //     "            <button id = \"word2\" class=\"btn btn-primary btn-lg testWord\">456</button>\n" +
+        //     "        </div>\n" +
+        //     "        <div class = \"testDiv\">\n" +
+        //     "            <button id = \"word3\" class=\"btn btn-primary btn-lg testWord\">789</button>\n" +
+        //     "            <button id = \"word4\" class=\"btn btn-primary btn-lg testWord\">111</button>\n" +
+        //     "        </div>\n" +
+        //     "        <!--<i id=\"audio\" class=\"fa fa-remove fa-3x fa-fw false\" ></i>-->\n" +
+        //     "    </div>");
+        // addTestWord();
+
+        ttt();
+    });
+//插入单词状态
+    function ttt() {
+        var word = {}
+        word.name = "apple";
+        word.categoryId = 3;
+        word.reciteNumber = 1;
+        console.log(word);
+
+        word1 = JSON.stringify(word);
+        // userId1 = JSON.stringify(userId);
+        $.ajax({
+            url:"./reciteWord/insert",
+            type:"POST",
+            async:false,
+            data:word1,
+            contentType:"application/json;charset=utf-8",
+            success:function(data){
+                console.log(data);
+            }
+        });
+    }
+
+
+
+
+    function addTestWord(){
+        $("#wordTranslation").text("ssd");
+        $("#word1").text("hljhjl");
+        $("#word2").text("asfafjl");
+        $("#word3").text("asdjl");
+        $("#word4").text("hasdasjl");
+    }
+
+    // function ttt() {
+    //     alert("dddd");
+    //     // var word = this;
+    //     console.log(this);
+    //     alert(this);
+    // }
+</script>
+</body>
+</html>

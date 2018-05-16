@@ -39,7 +39,7 @@
             contentType:"application/json",
             success:function(data){
                 if(data == 1){
-                    window.location.href("logIn.html");
+                    window.location.href= "logIn.html";
                 }
             }
         });

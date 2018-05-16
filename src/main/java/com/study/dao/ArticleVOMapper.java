@@ -24,4 +24,8 @@ public interface ArticleVOMapper {
     int updateByPrimaryKey(ArticleVO record);
     //根据页面限制批量查询文章
     List<ArticleVO> selectByPageLimit(Map<String,Object> map);
+    //查询文章数量
+    int countArticle();
+    //根据标签查询文章数量
+    int countArticleByLabel(String label);
 }

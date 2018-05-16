@@ -32,10 +32,12 @@ public class UserInfoServiceImplTest extends TestCase {
     //测试注册用户
     public void testregistUser() {
         UserVO userVO = new UserVO();
-        userVO.setUserId("771984187");
+        userVO.setUserId("123123");
         userVO.setName("gzm");
         userVO.setPassword("123456");
-        userVO.setAge(17);
+        userVO.setAge(18);
+        userVO.setGoal(20);
+        userVO.setEmail("sdasddsakj/asda/asdas");
         int number;
         number = userService.registUser(userVO);
         System.out.printf(" " + number);

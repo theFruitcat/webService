@@ -1,5 +1,7 @@
 package com.study.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 /**
  * 文章实体类
@@ -13,6 +15,7 @@ public class ArticleVO {
     //用户ID(作者)
     private String userId;
     //创作日期
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date time;
     //标签
     private String label;
@@ -22,6 +25,8 @@ public class ArticleVO {
     private String passed;
     //文章内容
     private String content;
+    //文章图片
+    private String pictureAddress;
 
     public Integer getArticleId() {
         return articleId;
@@ -85,5 +90,13 @@ public class ArticleVO {
 
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
+    }
+
+    public String getPictureAddress() {
+        return pictureAddress;
+    }
+
+    public void setPictureAddress(String pictureAddress) {
+        this.pictureAddress = pictureAddress;
     }
 }

@@ -24,4 +24,5 @@ public interface ArticleService {
     int insertCollectionArticle(ArticleCollectionVO record);
     //删除收藏文章
     int deleteCollectionArticle(ArticleCollectionVOKey record);
+    //查询文章数量
 }

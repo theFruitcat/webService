@@ -27,7 +27,7 @@ function getStatus() {
             var content = "<a href='../home.html'>" +alias;
             if(alias != null){
                 $(".login").empty();
-                $(".login").append("<a class ='status' href='../aboutus2.html'>");
+                $(".login").append("<a class ='status' href='../MyHome.html'>");
                 $(".status").append("<p>欢迎 " + alias + "</p>");
                 userId = data.userID;
                 // getUserInfo(data.userID);

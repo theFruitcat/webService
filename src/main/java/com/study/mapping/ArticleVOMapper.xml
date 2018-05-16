@@ -10,6 +10,7 @@
     <result column="LABEL" jdbcType="VARCHAR" property="label" />
     <result column="CLICKS" jdbcType="INTEGER" property="clicks" />
     <result column="PASSED" jdbcType="VARCHAR" property="passed" />
+    <result column="PICTURE_ADDRESS" jdbcType="VARCHAR" property="pictureAddress" />
   </resultMap>
 
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.study.domain.ArticleVO">
@@ -17,7 +18,7 @@
   </resultMap>
 
   <sql id="Base_Column_List">
-    ARTICLE_ID, ARTICLE_NAME, USER_ID, TIME, LABEL, CLICKS, PASSED
+    ARTICLE_ID, ARTICLE_NAME, USER_ID, TIME, LABEL, CLICKS, PASSED,PICTUEE_ADDRESS
   </sql>
 
   <sql id="Blob_Column_List">
@@ -74,6 +75,9 @@
       <if test="content != null">
         CONTENT,
       </if>
+        <if test="pictureAddress != null">
+        PICTURE_ADDRESS,
+        </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="articleId != null">
@@ -100,6 +104,9 @@
       <if test="content != null">
         #{content,jdbcType=LONGVARCHAR},
       </if>
+        <if test="pictureAddress != null">
+            #{pictureAddress,jdbcType=VARCHAR},
+        </if>
     </trim>
   </insert>
 
@@ -127,6 +134,9 @@
       <if test="content != null">
         CONTENT = #{content,jdbcType=LONGVARCHAR},
       </if>
+        <if test="pictureAddress != null">
+            PICTURE_ADDRESS = #{pictureAddress,jdbcType=VARCHAR},
+        </if>
     </set>
     where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
   </update>
@@ -139,7 +149,8 @@
       LABEL = #{label,jdbcType=VARCHAR},
       CLICKS = #{clicks,jdbcType=INTEGER},
       PASSED = #{passed,jdbcType=VARCHAR},
-      CONTENT = #{content,jdbcType=LONGVARCHAR}
+      CONTENT = #{content,jdbcType=LONGVARCHAR},
+      PICTURE_ADDRESS = #{pictureAddress,jdbcType=VARCHAR}
     where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
   </update>
 
@@ -150,7 +161,8 @@
       TIME = #{time,jdbcType=TIMESTAMP},
       LABEL = #{label,jdbcType=VARCHAR},
       CLICKS = #{clicks,jdbcType=INTEGER},
-      PASSED = #{passed,jdbcType=VARCHAR}
+      PASSED = #{passed,jdbcType=VARCHAR},
+      PICTURE_ADDRESS = #{pictureAddress,jdbcType=VARCHAR}
     where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
   </update>
 
@@ -161,10 +173,23 @@
       ,
       <include refid="Blob_Column_List" />
     from article
+      where 1=1
+      and
+      <if test="label!=null">
+         LABEL = #{label,jdbcType=VARCHAR}
+      </if>
     ORDER  BY TIME ASC
     <if test="start!=null and size!=null">
       limit #{start},#{size}
     </if>
   </select>
 
+  <select id="countArticle" resultType="java.lang.Integer">
+      select COUNT(*) from article
+  </select>
+
+    <select id="countArticleByLabel" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select COUNT(*) from article
+        where LABEL = #{label,jdbcType=VARCHAR}
+    </select>
 </mapper>
