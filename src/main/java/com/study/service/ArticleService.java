@@ -25,4 +25,11 @@ public interface ArticleService {
     //删除收藏文章
     int deleteCollectionArticle(ArticleCollectionVOKey record);
     //查询文章数量
+    int countArticle();
+    //根据标签查询文章数量
+    int countArticleByLabel(String label);
+    //查询文章的评论数量
+    int countArticleComment(String articleId);
+    //查询文章的收藏数量
+    int countArticleCollection(String articleId);
 }

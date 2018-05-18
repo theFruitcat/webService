@@ -84,12 +84,24 @@ public class ArticleServiceImpl implements ArticleService{
     public int deleteCollectionArticle(ArticleCollectionVOKey record) {
         return articleCollectionVOMapper.deleteByPrimaryKey(record);
     }
+    @Override
     //查询文章数量
     public int countArticle(){
         return  articleVOMapper.countArticle();
     }
+    @Override
     //根据标签查询文章数量
     public int countArticleByLabel(String label){
         return  articleVOMapper.countArticleByLabel(label);
+    }
+    @Override
+    //查询文章的评论数量
+    public int countArticleComment(String articleId){
+        return articleVOMapper.countArticleComment(articleId);
+    }
+    @Override
+    //查询文章的收藏数量
+    public int countArticleCollection(String articleId){
+        return articleVOMapper.countArticleCollection(articleId);
     }
 }

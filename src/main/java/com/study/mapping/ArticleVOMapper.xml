@@ -18,7 +18,7 @@
   </resultMap>
 
   <sql id="Base_Column_List">
-    ARTICLE_ID, ARTICLE_NAME, USER_ID, TIME, LABEL, CLICKS, PASSED,PICTUEE_ADDRESS
+    ARTICLE_ID, ARTICLE_NAME, USER_ID, TIME, LABEL, CLICKS, PASSED,PICTURE_ADDRESS
   </sql>
 
   <sql id="Blob_Column_List">
@@ -174,9 +174,9 @@
       <include refid="Blob_Column_List" />
     from article
       where 1=1
-      and
+
       <if test="label!=null">
-         LABEL = #{label,jdbcType=VARCHAR}
+        and  LABEL = #{label,jdbcType=VARCHAR}
       </if>
     ORDER  BY TIME ASC
     <if test="start!=null and size!=null">
@@ -191,5 +191,15 @@
     <select id="countArticleByLabel" parameterType="java.lang.String" resultType="java.lang.Integer">
         select COUNT(*) from article
         where LABEL = #{label,jdbcType=VARCHAR}
+    </select>
+
+  <select id="countArticleComment" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select COUNT(*) from comment
+    where ARTICLE_ID = #{articleId,jdbcType=VARCHAR}
+  </select>
+
+    <select id="countArticleCollection" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select COUNT(*) from article_collection
+        where ARTICLE_ID = #{articleId,jdbcType=VARCHAR}
     </select>
 </mapper>
