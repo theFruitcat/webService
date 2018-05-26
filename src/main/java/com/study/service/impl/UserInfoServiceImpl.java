@@ -32,12 +32,19 @@ public class UserInfoServiceImpl implements UserInfoService{
     @Autowired
     ArticleCollectionVOMapper articleCollectionDao;
 
+    @Autowired
+    AdministratorVOMapper administratorDao;
+
     //根据用户ID获取用户的详细信息
     public  UserVO getUserInfo(String id){
         UserVO user = userDao.selectByPrimaryKey(id);
         return user;
     }
 
+    //根据管理员ID获取管理员的详细信息
+    public AdministratorVO getAdministratorVO(String id){
+        return administratorDao.selectByPrimaryKey(id);
+    }
     @Override
     //注册用户
     public int registUser(UserVO uservo) {

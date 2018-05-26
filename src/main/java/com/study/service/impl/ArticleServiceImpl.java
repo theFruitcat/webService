@@ -104,4 +104,8 @@ public class ArticleServiceImpl implements ArticleService{
     public int countArticleCollection(String articleId){
         return articleVOMapper.countArticleCollection(articleId);
     }
+    //更新文章
+    public int updateArticle(ArticleVO articleVO){
+        return articleVOMapper.updateByPrimaryKeySelective(articleVO);
+    }
 }

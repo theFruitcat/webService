@@ -40,6 +40,9 @@ public class ReciteWordController {
     public List<WordReciteVO> getReciteWord(@RequestBody UserVO user){
         String userID = user.getUserId();
         String level = user.getLevel();
+        if(level == "middle"){
+
+        }
         int catagoryId = Integer.valueOf(level);
         Map map = new HashMap();
 

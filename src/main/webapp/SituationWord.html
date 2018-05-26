@@ -125,43 +125,54 @@
             <div class="row">
                 <h1 class="title text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay="300ms">单词训练</h1>
                 <div id="team-carousel" class="carousel slide wow fadeIn" data-ride="carousel" data-wow-duration="400ms" data-wow-delay="400ms">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators visible-xs">
-                        <li data-target="#team-carousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#team-carousel" data-slide-to="1"></li>
-                    </ol>
-                    <!-- Wrapper for slides -->
-                    <!--<div class="img-rotation">-->
+                    <h2 align="center" style="color:royalblue" >准备好了就点击开始吧!</h2>
+                    <div class="train" align="center">
+                        <a  class="btn btn-common" href="#" id="start">开始训练</a>
+                    </div>
+                    <!--<div class="Level">-->
+                        <!--<div class="col-sm-4 text-left">-->
+                            <!--<h2 id="currentLevel"></h2>-->
+                        <!--</div>-->
+                        <!--<div class="col-sm-4 text-center">-->
+                            <!--<h2 id = "translate"></h2><br>-->
+                            <!--<i class="btn fa fa-play-circle fa-4x"></i>-->
+                        <!--</div>-->
 
                     <!--</div>-->
-                    <div class="Level">
-                        <div class="col-sm-4 text-left">
-                            <h2>当前等级:LV1</h2>
-                        </div>
-                        <div class="col-sm-4 text-center">
-                            <h2>单词释义:apple</h2><br>
-                            <i class="btn fa fa-play-circle fa-4x"></i>
-                        </div>
-                        <div class="col-sm-4 text-right">
-                            <a class="btn btn-default" href="#"><i class="fa fa-history fa-2x"></i><h4>历史记录</h4></a>
-                            <!--<a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a>-->
-                        </div>
-                    </div>
 
-                    <div class="img-rotation">
-                        <a class="img-left" href="#">
-                            <img src="static/images/left.png" alt=""/>
-                        </a>
-                        <img class="img-picture" src="static/images/aboutus/2.jpg" alt=""/>
-                        <a class="img-right" href="#">
-                            <img src="static/images/right.png" alt=""/>
-                        </a>
-                    </div>
+                    <!--<div class="img-rotation">-->
+                        <!--<btn class=" btn img-left" href="#">-->
+                            <!--<img src="static/images/left.png" alt=""/>-->
+                        <!--</btn>-->
+                        <!--<img class="img-picture" src="" alt=""/>-->
+                        <!--<btn class="btn img-right" href="#">-->
+                            <!--<img src="static/images/right.png" alt=""/>-->
+                        <!--</btn>-->
+                    <!--</div>-->
                 </div>
             </div>
         </div>
     </section>
     <!--/#team-->
+
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>你确定要离开训练吗?</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="confirm">确认</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
 
     <footer id="footer">
        <div class="container">
@@ -179,8 +190,12 @@
 
     <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="static/js/lightbox.min.js"></script>
     <script type="text/javascript" src="static/js/wow.min.js"></script>
+    <script type="text/javascript" src="static/js/jquery.countTo.js"></script>
+    <script src="https://code.createjs.com/1.0.0/easeljs.min.js"></script>
+    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+    <script src="https://code.createjs.com/1.0.0/soundjs.min.js"></script>
+    <script type="text/javascript" src="static/js/SituationWord.js"></script>
     <script type="text/javascript" src="static/js/main.js"></script>
 </body>
 </html>

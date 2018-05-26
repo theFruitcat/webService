@@ -1,5 +1,7 @@
 package com.study.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 /**
  * 评论实体类
@@ -8,6 +10,7 @@ public class CommentVO extends CommentVOKey {
     //姓名
     private String name;
     //评论时间
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date commentTime;
     //评论人ID
     private String commentPeopleId;

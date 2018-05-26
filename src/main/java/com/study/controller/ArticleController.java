@@ -1,6 +1,7 @@
 package com.study.controller;
 
 import com.study.domain.ArticleVO;
+import com.study.domain.CommentVO;
 import com.study.service.ArticleService;
 import com.study.service.impl.ArticleServiceImpl;
 import com.study.service.impl.UserInfoServiceImpl;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -92,7 +94,7 @@ public class ArticleController {
      * 查询文章的收藏和评论数
      *@param articleId 文章id
      * */
-    @RequestMapping(value = "/getCollectionAndCommentNumber")
+    @RequestMapping(value = "/getCollectionAndCommentNumber",method = RequestMethod.GET)
     @ResponseBody
     public Map getCollectionAndCommentNumber(String articleId){
         int collectionNumber;
@@ -103,6 +105,51 @@ public class ArticleController {
         map.put("collectionNumber",collectionNumber);
         map.put("commentNumber",commentNumber);
         return map;
+    }
+
+    /***
+     * 获取单个文章的详细信息
+     * @param articleId 文章id
+     * */
+    @RequestMapping(value = "/getSingleArticle" ,method = RequestMethod.GET)
+    @ResponseBody
+    public ArticleVO getSingleArticle(int articleId){
+        return articleService.getArticle(articleId);
+    }
+
+    /**
+     * 新增文章评论
+     * */
+    @RequestMapping(value = "/insertComment",method = RequestMethod.POST)
+    @ResponseBody
+    public int insertComment(@RequestBody CommentVO commentVO){
+            int number = articleService.insertComment(commentVO);
+            return number;
+    }
+
+    /**
+     * 批量查询文章对应的评论
+     * @param map 包含参数:文章id articleId
+     * */
+    @RequestMapping(value = "/getComment" ,method = RequestMethod.POST)
+    @ResponseBody
+    public List<CommentVO> getComments(@RequestBody Map map){
+
+            List<CommentVO> commentVOlist = articleService.getComments(map);
+            List<CommentVO> newCommentVOlist = new ArrayList<>();
+            for(CommentVO commentVO:commentVOlist){
+                    int commentId = commentVO.getCommentId();
+                    Map commap = new HashMap();
+                    commap.put("articleId",commentId);
+                    List<CommentVO> comcommentVOlist = articleService.getComments(commap);
+                    for(CommentVO comcommentVO:comcommentVOlist){
+                        newCommentVOlist.add(comcommentVO);
+                    }
+                }
+            for(CommentVO commentVO:newCommentVOlist){
+                commentVOlist.add(commentVO);
+            }
+            return commentVOlist;
     }
     /**
      * 用于对文章的内容进行简化,截取固定的长度字符串
@@ -132,6 +179,20 @@ public class ArticleController {
         //将匹配到的内容全部替换为空
         newContent = m.replaceAll("");
         return newContent;
+    }
+
+    /**
+     * 管理员审阅查询未审核文章列表
+     *
+     * */
+    @RequestMapping(value = "/reviewArticle",method = RequestMethod.POST)
+    @ResponseBody
+    public int reviewArticle(@RequestBody ArticleVO articleVO){
+
+        //获取需求的文章列表
+       int number = articleService.updateArticle(articleVO);
+
+        return number;
     }
 }
 

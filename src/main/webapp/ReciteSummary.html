@@ -12,7 +12,8 @@
     <link href="static/css/animate.min.css" rel="stylesheet">
 	<link href="static/css/main.css" rel="stylesheet">
 	<link href="static/css/responsive.css" rel="stylesheet">
-
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
     <!--[if lt IE 9]>
 	    <script src="js/html5shiv.js"></script>
 	    <script src="js/respond.min.js"></script>
@@ -110,7 +111,7 @@
                         <li class="active"><a href="index.html">首页</a></li>
                         <li class="dropdown"><a href="#">应用 <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
-                                <li><a href="aboutus.html">情境训练</a></li>
+                                <li><a href="SituationWord.html">情境训练</a></li>
                                 <li><a href="ReciteSummary.html">单词训练</a></li>
                                 <li><a href="ReciteSummary.html">文章阅读</a></li>
                             </ul>
@@ -126,14 +127,14 @@
                         </li>
                     </ul>
                 </div>
-                <div class="search">
-                    <form role="form">
-                        <i class="fa fa-search"></i>
-                        <div class="field-toggle">
-                            <input type="text" class="search-form" autocomplete="off" placeholder="Search">
-                        </div>
-                    </form>
-                </div>
+                <!--<div class="search">-->
+                    <!--<form role="form">-->
+                        <!--<i class="fa fa-search"></i>-->
+                        <!--<div class="field-toggle">-->
+                            <!--<input type="text" class="search-form" autocomplete="off" placeholder="Search">-->
+                        <!--</div>-->
+                    <!--</form>-->
+                <!--</div>-->
             </div>
         </div>
     </header>
@@ -192,13 +193,60 @@
                 </div>
                 <div class="modal-body">
                     <h3>你还没有选择你的能力等级,请根据自己的能力选择自己的外语学习能力等级!</h3>
-                    <h4><input type="radio" name="sex" value="low">外语初级<small>适合英语基础为零或者小学水平的学习者</small></h4><br>
-                    <h4><input type="radio" name="sex" value="middle">外语中级<small>适合英语能力在初中至高中水平的学习者</small></h4><br>
-                    <h4><input type="radio" name="sex" value="high">外语高级<small>适合英语水平在大学及以上的学习者</small></h4>
+                    <h4><input type="radio" name="sex" value="0">外语初级<small>适合英语基础为零或者小学水平的学习者</small></h4><br>
+                    <h4><input type="radio" name="sex" value="3">外语中级<small>适合英语能力在初中至高中水平的学习者</small></h4><br>
+                    <h4><input type="radio" name="sex" value="5">外语高级<small>适合英语水平在大学及以上的学习者</small></h4>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                     <button type="button" class="btn btn-primary" id="confirm">确认</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>你还没有选择你的学习目标,请根据自己的实际情况选择自己的学习目标!</h3>
+                    <div class="btn-group">
+                        <select class="selectpicker" >
+                            <option>20</option>
+                            <option>50</option>
+                            <option>80</option>
+                            <option>100</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="confirm1">确认</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>你还没有登录,请登录后再开始进行!</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="confirm1">登录</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal -->
@@ -216,6 +264,12 @@
     <script type="text/javascript" src="static/js/lightbox.min.js"></script>
     <script type="text/javascript" src="static/js/wow.min.js"></script>
     <!--<script type="text/javascript" src="static/js/status.js"/>-->
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+    <script src="static/js/i18n/defaults-zh_CN.js"></script>
     <script type="text/javascript" src="static/js/ReciteSummary.js"/>
     <script type="static/text/javascript" src="static/js/main.js"></script>
 </body>

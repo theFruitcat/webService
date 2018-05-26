@@ -21,7 +21,7 @@ public class SituationWordServiceImpl implements SituationWordService{
     WordSituationVOMapper wordSituationDao;
 
     @Override
-    //批量获取情境单词,必传参数:情境,开始编号,结束编号
+    //批量获取情境单词,必传参数:情境 可选参数:开始编号,结束编号
     public List<WordSituationVO> getSituationWords(Map<String, Object> map) {
         return wordSituationDao.getSituationWords(map);
     }

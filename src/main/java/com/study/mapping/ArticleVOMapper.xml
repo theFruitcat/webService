@@ -178,6 +178,9 @@
       <if test="label!=null">
         and  LABEL = #{label,jdbcType=VARCHAR}
       </if>
+      <if test="passed!=null">
+        and  PASSED = #{passed,jdbcType=VARCHAR}
+      </if>
     ORDER  BY TIME ASC
     <if test="start!=null and size!=null">
       limit #{start},#{size}
@@ -187,17 +190,17 @@
   <select id="countArticle" resultType="java.lang.Integer">
       select COUNT(*) from article
   </select>
-
+<!--统计某标签下的文章数量-->
     <select id="countArticleByLabel" parameterType="java.lang.String" resultType="java.lang.Integer">
         select COUNT(*) from article
         where LABEL = #{label,jdbcType=VARCHAR}
     </select>
-
+<!--统计文章评论-->
   <select id="countArticleComment" parameterType="java.lang.String" resultType="java.lang.Integer">
     select COUNT(*) from comment
     where ARTICLE_ID = #{articleId,jdbcType=VARCHAR}
   </select>
-
+<!--统计文章收藏-->
     <select id="countArticleCollection" parameterType="java.lang.String" resultType="java.lang.Integer">
         select COUNT(*) from article_collection
         where ARTICLE_ID = #{articleId,jdbcType=VARCHAR}

@@ -90,7 +90,7 @@
     where NAME = #{name,jdbcType=VARCHAR}
   </update>
 
-    <!--根据页面需求查询背诵的单词 必传参数:情境ID,开始编号,截止编号-->
+    <!--根据页面需求查询背诵的单词 必传参数:情境ID,可选参数:开始编号,截止编号-->
     <select id="getSituationWords" parameterType="Map" resultMap="BaseResultMap">
         SELECT t1.*,t2.NUMBER,t2.SITUATION
         from word_situation t1,word_situation_number t2

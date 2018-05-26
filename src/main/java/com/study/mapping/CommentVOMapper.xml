@@ -130,7 +130,7 @@
       and ARTICLE_ID = #{articleId,jdbcType=INTEGER}
   </update>
 
-  <select id="getComments" parameterType="Map" resultMap="BaseResultMap">
+  <select id="getComments" parameterType="Map" resultMap="ResultMapWithBLOBs">
     SELECT
     <include refid="Base_Column_List" />
     ,

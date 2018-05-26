@@ -1,6 +1,7 @@
 package com.study.controller;
 
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.study.domain.AdministratorVO;
 import com.study.domain.UserVO;
 import com.study.service.impl.UserInfoServiceImpl;
 
@@ -148,4 +149,49 @@ public class UserInfoController {
     public int update(@RequestBody UserVO user){
         return UserInfoService.updateUser(user);
     }
+
+    /**
+     * 注销用户登录状态
+     *
+     * */
+    @RequestMapping(value = "/logOut" ,method = RequestMethod.GET)
+    @ResponseBody
+    public void logOut(HttpServletRequest request){
+        //获取session
+        HttpSession session = request.getSession();
+        //移除用户的登录状态
+        session.removeAttribute("userID");
+        session.removeAttribute("alias");
+    }
+
+    /**
+     * 处理管理员登录
+     * @param  administratorVO
+     * @return  number(int)
+     * */
+    @RequestMapping(value = "/logInAdmin" ,method = RequestMethod.POST)
+    @ResponseBody
+    public int logInAdmin(HttpServletRequest request,@RequestBody AdministratorVO administratorVO){
+        //获取session
+        HttpSession session = request.getSession();
+        //获取用户ID
+        String adminID = administratorVO.getAdministratorId();
+        String adminPassWord = administratorVO.getPassword();
+        //根据登录用户ID获取真实用户信息
+        AdministratorVO trueAdmin = UserInfoService.getAdministratorVO(adminID);
+        //number标识符,1代码验证通过,2代表验证失败 默认失败
+        int number = 2;
+        String truePassWord = trueAdmin.getPassword();
+        if(truePassWord.equals(adminPassWord) ){
+            String name = trueAdmin.getName();
+            number = 1;
+            session.setAttribute("adminID",adminID);
+            session.setAttribute("adminName",name);
+            return number;
+        }
+        else{
+            return number;
+        }
+    }
+
 }

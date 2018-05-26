@@ -11,12 +11,8 @@ var totalAtriclesNumber;
 //指定标签的文章数量
 var articleNumberByLabel;
 totalAtriclesNumber = getArticleNumber("null");
-if(totalAtriclesNumber/6 > 1){
-    getArtilces(1);
-}
-else{
-    getArtilces(totalAtriclesNumber);
-}
+getArtilces(1);
+
 initBottomLine(totalAtriclesNumber);
 //获取用户信息
 function getuser() {
@@ -58,7 +54,7 @@ function getArticleNumber(label) {
         url:"./article/countArticles?label="+label,
         type:"GET",
         async:false,
-        data:label,
+        // data:label,
         contentType:"application/json;charset=utf-8",
         success:function(data){
             number = data;
@@ -190,13 +186,13 @@ function initArticles(article,id) {
     $("#content").append("<div id="+"'"+id+"'"+" class=\"col-md-6 col-sm-12 blog-padding-right\">\n" +
         "                            <div class=\"single-blog two-column\">\n" +
         "                                <div class=\"post-thumb\">\n" +
-        "                                    <a href=\"blogdetails.html\"><img src="+ "'"+ image+"'"+" class=\"img-responsive\" alt=\"\"></a>\n" +
-        "                                    <div class=\"post-overlay\">\n" +
-        "                                        <span class=\"uppercase\"><a href=\"#\">14 <br><small>Feb</small></a></span>\n" +
-        "                                    </div>\n" +
+        "                                    <a href=\"blogdetails.html?articleId="+id+"\"><img src="+ "'"+ image+"'"+" class=\"img-responsive\" alt=\"\"></a>\n" +
+        // "                                    <div class=\"post-overlay\">\n" +
+        // "                                        <span class=\"uppercase\"><a href=\"#\">14 <br><small>Feb</small></a></span>\n" +
+        // "                                    </div>\n" +
         "                                </div>\n" +
         "                                <div class=\"post-content overflow\">\n" +
-        "                                    <h2 class=\"post-title bold\"><a href=\"blogdetails.html\">"+articleName+"</a></h2>\n" +
+        "                                    <h2 class=\"post-title bold\"><a href=\"blogdetails.html?articleId="+id+"\">"+articleName+"</a></h2>\n" +
         "                                    <h3 class=\"post-author\"><a href=\"#\">"+author+"</a></h3>\n" +
         "                                    <p>"+content+"</p>\n" +
         "                                    <a href=\"#\" class=\"read-more\">查看更多</a>\n" +
