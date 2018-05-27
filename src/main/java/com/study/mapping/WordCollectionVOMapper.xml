@@ -100,4 +100,12 @@
     </if>
   </select>
 
+  <select id="countCollection" parameterType="com.study.domain.WordCollectionVO">
+      SELECT
+      COUNT(*)
+      from word_collection
+       where USER_ID = #{userId,jdbcType=VARCHAR}
+      and CATEGORY_ID = #{categoryId,jdbcType=INTEGER}
+      and  NAME = #{name,jdbcType=VARCHAR}
+  </select>
 </mapper>

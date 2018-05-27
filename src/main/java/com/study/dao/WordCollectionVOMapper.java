@@ -23,5 +23,6 @@ public interface WordCollectionVOMapper {
     int updateByPrimaryKey(WordCollectionVO record);
     //批量查询收藏单词
     List<WordCollectionVO> selectByPageLimit(Map<String, Object> map);
-
+    //查询单个单词(统计是否存在)
+    int countCollection (WordCollectionVO record);
 }

@@ -45,6 +45,22 @@ function getStatus() {
     return userId;
 }
 
+//注销点击事件
+$(".logOut").click(function () {
+    $.ajax({
+        url:"./userInfo/logOut",
+        type:"GET",
+        async:false,
+        // data:user1,
+        contentType:"application/json;charset=utf-8",
+        success:function(){
+            $(".login").empty();
+            $(".login").append("<a href=\"logIn.html\">登录</a>");
+            userId = null;
+        }
+    });
+})
+
 function getUserInfo() {
     user = {};
     //获取用户的全部信息
@@ -97,18 +113,3 @@ $("#confirm3").click(function () {
     }
 })
 
-//注销点击事件
-$(".logOut").click(function () {
-    $.ajax({
-        url:"./userInfo/logOut",
-        type:"GET",
-        async:false,
-        // data:user1,
-        contentType:"application/json;charset=utf-8",
-        success:function(){
-            $(".login").empty();
-            $(".login").append("<a href=\"logIn.html\">登录</a>");
-            userId = null;
-        }
-    });
-})

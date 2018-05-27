@@ -4,7 +4,7 @@
 //用户ID
 var userId ;
 //获取session中的用户id
-userId = getuser();
+userId = getStatus();
 
 //数据库内文章的数量
 var totalAtriclesNumber;
@@ -15,7 +15,7 @@ getArtilces(1);
 
 initBottomLine(totalAtriclesNumber);
 //获取用户信息
-function getuser() {
+function getStatus() {
     var userId;
     //处理用户的登录信息
     $.ajax({
@@ -33,8 +33,12 @@ function getuser() {
             var content = "<a href='../home.html'>" +alias;
             if(alias != null){
                 $(".login").empty();
-                $(".login").append("<a class ='status' href='../MyHome.html'>");
-                $(".status").append("<p>欢迎 " + alias + "</p>");
+                $(".login").append("<a href=\"blog.html\"><p>欢迎 " + alias + "</p></a>\n" +
+                    "                            <ul role=\"menu\" class=\"sub-menu\">\n" +
+                    "                                <li><a href=\"MyHome.html\">主页</a></li>\n" +
+                    "                                <li><a class = \"logOut\">注销</a></li>\n" +
+                    "                            </ul>\n" +
+                    "                        ");
                 userId = data.userID;
                 // getUserInfo(data.userID);
             }
@@ -46,6 +50,23 @@ function getuser() {
     });
     return userId;
 }
+
+//注销点击事件
+$(".logOut").click(function () {
+    $.ajax({
+        url:"./userInfo/logOut",
+        type:"GET",
+        async:false,
+        // data:user1,
+        contentType:"application/json;charset=utf-8",
+        success:function(){
+            $(".login").empty();
+            $(".login").append("<a href=\"logIn.html\">登录</a>");
+            userId = null;
+        }
+    });
+})
+
 
 //获取文章的数量
 function getArticleNumber(label) {

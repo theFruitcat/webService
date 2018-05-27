@@ -149,8 +149,12 @@
                 var content = "<a href='../home.html'>" +alias;
                 if(alias != null){
                     $(".login").empty();
-                    $(".login").append("<a class ='status' href='../MyHome.html'>");
-                    $(".status").append("<p>欢迎 " + alias + "</p>");
+                    $(".login").append("<a href=\"blog.html\"><p>欢迎 " + alias + "</p></a>\n" +
+                        "                            <ul role=\"menu\" class=\"sub-menu\">\n" +
+                        "                                <li><a href=\"MyHome.html\">主页</a></li>\n" +
+                        "                                <li><a class = \"logOut\">注销</a></li>\n" +
+                        "                            </ul>\n" +
+                        "                        ");
                     userId = data.userID;
                     // getUserInfo(data.userID);
                 }
@@ -351,14 +355,11 @@
                 testNumber = 0;
             $(".scene-content").empty();
             $(".scene-content").append("<div class=\"record\">\n" +
-                "            <button class=\"btn record-learn\">\n" +
-                "                学习记录\n" +
-                "            </button>\n" +
                 "            <div class=\"record-history\">\n" +
                 "                <ul class=\"record-ul\">\n" +
                 "                </ul>\n" +
                 "            </div>\n" +
-                "            <button class=\"btn collect-btn\">收藏</button>\n" +
+                "            <button class=\"btn collect-btn btn-success\"><li class=\"fa fa-star\"></li>收藏</button>\n" +
                 "        </div>\n" +
                 "        <div class=\"current-img\">\n" +
                 "            <img id = \"wordPicture\" class=\"current-imgs\" src=\"\" alt=\"11\"/>\n" +
@@ -412,3 +413,45 @@
             }
         });
     }
+
+    $(".collect-btn").click(function () {
+        var word = {};
+        var userId = data.userId;
+        var categoryId = data.abilityLevel;
+        var name =  $("#word span").text();
+        // alert("用户id"+userId+"类别"+ categoryId +"名称"+ name )
+        word.userId = userId;
+        word.categoryId = categoryId;
+        word.name = name;
+        word.collectionNumber = reciteWords[currentNumber].number;
+        var word = JSON.stringify(word);
+        $.ajax({
+            url:"./reciteWord/addCollectionWord",
+            type:"POST",
+            async:false,
+            data:word,
+            contentType:"application/json;charset=utf-8",
+            success:function(data){
+                alert("收藏成功");
+            },
+            error:function () {
+                alert("该单词已经被收藏");
+            }
+        });
+    })
+
+    //注销
+    $(".logOut").click(function () {
+        $.ajax({
+            url:"./userInfo/logOut",
+            type:"GET",
+            async:false,
+            // data:user1,
+            contentType:"application/json;charset=utf-8",
+            success:function(){
+                $(".login").empty();
+                $(".login").append("<a href=\"logIn.html\">登录</a>");
+                userId = null;
+            }
+        });
+    })

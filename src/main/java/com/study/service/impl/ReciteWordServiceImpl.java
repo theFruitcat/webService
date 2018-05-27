@@ -59,4 +59,9 @@ public class ReciteWordServiceImpl implements ReciteWordService {
         return wordCollectionDao.deleteByPrimaryKey(record);
 }
 
+    //查询收藏单词是否存在
+    public int selectCollectionWord(WordCollectionVO record){
+        return wordCollectionDao.countCollection(record);
+    }
+
 }

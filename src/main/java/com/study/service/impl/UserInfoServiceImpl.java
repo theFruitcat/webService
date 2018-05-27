@@ -67,7 +67,7 @@ public class UserInfoServiceImpl implements UserInfoService{
     }
 
     @Override
-    //批量查询背诵单词
+    //批量查询已背诵单词
     public List<WordRecitedVO> getRecitedWords(Map<String, Object> map) {
         return wordRecitedDao.selectByPageLimit(map);
     }

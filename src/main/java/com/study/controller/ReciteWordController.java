@@ -1,10 +1,7 @@
 package com.study.controller;
 
 
-import com.study.domain.StudyProgressVO;
-import com.study.domain.UserVO;
-import com.study.domain.WordReciteVO;
-import com.study.domain.WordRecitedVO;
+import com.study.domain.*;
 import com.study.service.ReciteWordService;
 import com.study.service.StudyProgressService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,6 +78,19 @@ public class ReciteWordController {
         int i = ReciteWordService.insertRecitedWord(word);
         return i;
     }
+
+    /**
+     * 单词收藏
+     * @param wordCollectionVO
+     * */
+    @RequestMapping(value = "/addCollectionWord" ,method = RequestMethod.POST)
+    @ResponseBody
+    public int addCollectionWord(@RequestBody WordCollectionVO wordCollectionVO){
+        int number = ReciteWordService.insertCollectionWord(wordCollectionVO);
+        return  number;
+    }
+
+
 }
 
 

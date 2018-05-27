@@ -35,8 +35,12 @@ function getuser() {
             var content = "<a href='../home.html'>" +alias;
             if(alias != null){
                 $(".login").empty();
-                $(".login").append("<a class ='status' href='../MyHome.html'>");
-                $(".status").append("<p>欢迎 " + alias + "</p>");
+                $(".login").append("<a href=\"blog.html\"><p>欢迎 " + alias + "</p></a>\n" +
+                    "                            <ul role=\"menu\" class=\"sub-menu\">\n" +
+                    "                                <li><a href=\"MyHome.html\">主页</a></li>\n" +
+                    "                                <li><a class = \"logOut\">注销</a></li>\n" +
+                    "                            </ul>\n" +
+                    "                        ");
                 userId = data.userID;
                 user = data;
                 // getUserInfo(data.userID);
@@ -49,6 +53,23 @@ function getuser() {
     });
     return user;
 }
+
+//注销点击事件
+$(".logOut").click(function () {
+    $.ajax({
+        url:"./userInfo/logOut",
+        type:"GET",
+        async:false,
+        // data:user1,
+        contentType:"application/json;charset=utf-8",
+        success:function(){
+            $(".login").empty();
+            $(".login").append("<a href=\"logIn.html\">登录</a>");
+            userId = null;
+        }
+    });
+})
+
 /**
  * 获取文章的详细信息
  * @param articleId 文章id int型

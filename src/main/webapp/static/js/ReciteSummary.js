@@ -93,7 +93,7 @@ $(".btn-common").click(function () {
 $("#confirm").click(function () {
     var level = $("input:radio:checked").val();
     if(level == "3"){
-        window.location.href = "AbilityTest.html?catagoryId=3";
+        window.location.href = "AbilityTest.html?catagoryId=0";
     }
     else{
 
@@ -122,7 +122,7 @@ $("#confirm1").click(function () {
 
     }
 })
-
+//注销
 $(".logOut").click(function () {
     $.ajax({
         url:"./userInfo/logOut",

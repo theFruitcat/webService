@@ -3,6 +3,8 @@ package com.study.controller;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.study.domain.AdministratorVO;
 import com.study.domain.UserVO;
+import com.study.domain.WordCollectionVO;
+import com.study.domain.WordRecitedVO;
 import com.study.service.impl.UserInfoServiceImpl;
 
 import org.codehaus.jackson.JsonProcessingException;
@@ -18,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -194,4 +197,32 @@ public class UserInfoController {
         }
     }
 
+    /**
+     * 批量查询收藏单词
+     *
+     * */
+    @RequestMapping(value = "/getCollectionWords" ,method = RequestMethod.POST)
+    @ResponseBody
+    public List<WordCollectionVO> getCollectionWords(@RequestBody Map map){
+        return UserInfoService.getCollectionWords(map);
+    }
+    /**
+     * 批量查询已背诵单词
+     *
+     * */
+    @RequestMapping(value = "/getRecitedWords" ,method = RequestMethod.POST)
+    @ResponseBody
+    public List<WordRecitedVO> getRecitedWords(@RequestBody Map map){
+        return UserInfoService.getRecitedWords(map);
+    }
+
+    /**
+     * 批量查询已背诵单词
+     *
+     * */
+    @RequestMapping(value = "/getCollectionArticles" ,method = RequestMethod.POST)
+    @ResponseBody
+    public List<WordRecitedVO> getCollectionArticles(@RequestBody Map map){
+        return UserInfoService.getCollectionArticles(map);
+    }
 }
